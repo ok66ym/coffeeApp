@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('explanation');                        //珈琲豆の説明文
             $table->string('shop_name', 200);                   //販売店名．100文字以内
             $table->string('shop_url', 200);                    //珈琲豆の販売サイト．100文字以内
-            $table->string('official_url', 200);                //販売店の公式URL
+            $table->string('official_url', 200) ->nullable();   //販売店の公式URL
             $table->string('map')->nullable();                  //google map
             $table->timestamps();
         });
@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffeeposts');
+        Schema::dropIfExists('coffee_posts');
     }
 };
