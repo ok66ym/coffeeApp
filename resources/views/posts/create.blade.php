@@ -49,10 +49,9 @@
                 
                 <!--コーヒーを5つの項目で評価-->
                 <h2>コーヒーを評価</h2>
-                <div class="butter">
+                <div class="bitter">
                     <h2>苦味</h2>
                     <input type="text" name="post[bitter]" placeholder="5" value="{{ old('post.bitter') }}"/>
-                </div>
                 <p class="bitter_error" style="color:red">{{ $errors->first('post.bitter') }}</p>
                 <div class="acidity">
                     <h2>酸味</h2>
