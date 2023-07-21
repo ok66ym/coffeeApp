@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('coffeeposts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();        //'user_id'は，'usersテーブル'のidを参照する外部キー
+            //'user_id' は 'usersテーブル' の 'id' を参照する外部キー
+            $table->bigInteger('user_id')->unsigned();          //unsigned()型で定義
             $table->double('bitter', 3, 2);                     //苦味．3桁で小数点以下2桁の少数カラム
             $table->double('acidity', 3, 2);                    //酸味．同上
             $table->double('rich', 3, 2);                       //コク．同上
