@@ -42,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coffee_posts');
+        Schema::dropIfExists('coffeeposts');
     }
 };
