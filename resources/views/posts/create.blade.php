@@ -8,13 +8,13 @@
     </head>
     <x-app-layout>
         <body>
-            <h1>Name</h1>
+            <h1>投稿作成</h1>
             <form action='/posts' method="POST">
                 @csrf
                 
                 <!--コーヒー名を記録-->
                 <div class="coffeeName">
-                    <h2>Nama</h2>
+                    <h2>コーヒー名</h2>
                     <input type="text" name="post[name]" placeholder="ブルーマウンテン" value="{{ old('post.name') }}"/>
                 </div>
                 <p class="name_error" style="color:red">{{ $errors->first('post.name') }}</p>

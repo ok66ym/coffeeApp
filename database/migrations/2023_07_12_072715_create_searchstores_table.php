@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();    //'user_id'は，'usersテーブル'のidを参照する外部キー
             $table->text('body');                           //検索履歴．
-            $table->timestamps();
+            $table->timestamps();                           //created_at, updated_atの追加
+            $table->softDeletes();                          //deleted_atの追加
         });
     }
 

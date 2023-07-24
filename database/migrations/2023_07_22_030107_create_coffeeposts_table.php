@@ -32,7 +32,8 @@ return new class extends Migration
             $table->string('shop_url', 200);                    //珈琲豆の販売サイト．100文字以内
             $table->string('official_url', 200) ->nullable();   //販売店の公式URL 投稿画面に表示するか迷い中
             $table->string('map')->nullable();                  //google map
-            $table->timestamps();
+            $table->timestamps();                               //created_at, updated_atの追加
+            $table->softDeletes();                              //deleted_atの追加
         });
     }
 
