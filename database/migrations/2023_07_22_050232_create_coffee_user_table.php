@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('coffee_user', function (Blueprint $table) {
             //coffee_idとuser_idを外部キーに設定
-            $table->foreignId('coffee_id')->constrained('coffees');   //参照先のテーブル名をonstrainedに記載
+            $table->foreignId('coffee_id')->constrained('coffees');     //参照先のテーブル名をonstrainedに記載
             $table->foreignId('user_id')->constrained('users');
-            $table->primary(['coffee_id', 'user_id']); 
+            $table->primary(['coffee_id', 'user_id']);
 
         });
     }

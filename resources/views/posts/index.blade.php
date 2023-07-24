@@ -12,10 +12,10 @@
             {{ Auth::user() -> name }} 
             
             <!--投稿作成外面の実装-->
-            <a href='/posts/create'>投稿</a>
+            <a href='/posts/create'><br>新規投稿</a>
             
             <!--投稿内容を表示-->
-            <h1>Name</h1>
+            <h1>投稿</h1>
             <div class='posts'>
                 @foreach ($posts as $post)
                     <div class='post'>

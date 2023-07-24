@@ -30,9 +30,12 @@ Route::get('/dashboard', function () {
 //CoffeePost関係のルーティング
 Route::controller(CoffeePostController::class)->middleware(['auth'])->group(function(){
    Route::get('/', 'index')->name('index');                 //投稿一覧
-   Route::get('/posts/create', 'create')->name('create');   //新規投稿作成
    Route::post('/posts', 'store')->name('store');           //投稿を保存
+   Route::get('/posts/create', 'create')->name('create');   //新規投稿作成
    Route::get('/posts/{post}', 'show')->name('show');       //投稿詳細
+   Route::put('/posts/{post}', 'update');                   //投稿編集実行
+   Route::delete('/posts/{post}', 'delete');                //投稿削除
+   Route::get('/posts/{post}/edit', 'edit');                //投稿編集表示
 });
 
 //Breeze機能の認証機能

@@ -20,7 +20,7 @@ class CoffeePostController extends Controller
         // CoffeePostモデルのgetPaginateBylimitメソッドを呼び出してページネーションの結果を取得
         $posts = $post->getPaginateBylimit($userId); 
         
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index')->with(['posts' => $posts]);
         
         //return view('posts.index')->with(['posts' => $post->getPaginateBylimit()]); //getPaginateBylimit()：CoffeePost.phpで定義したメソッド．
     }
@@ -39,7 +39,28 @@ class CoffeePostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
+    //投稿詳細
     public function show(CoffeePost $post) {
         return view('posts.show')->with(['post' => $post]);
+    }
+    
+    //投稿編集
+    public function edit(CoffeePost $post) {
+        return view("posts.edit")->with(['post' => $post]);
+    }
+    
+    //投稿編集実行
+    public function update(CoffeePostRequest $request, CoffeePost $post) {
+        $input_post = $request['post'];
+        $post->fill($input_post)->save();
+        
+        return redirect('/posts/' . $post->id);
+    }
+    
+    //投稿削除
+    //論理削除で実装
+    public function delete(CoffeePost $post) {
+        $post->delete();
+        return redirect('/');
     }
 }
