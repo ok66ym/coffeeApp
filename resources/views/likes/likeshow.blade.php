@@ -12,11 +12,7 @@
     </head>
     <x-app-layout>
         <body>
-            <!--投稿編集ページへ-->
-            <div class="edit">
-                <a href="/posts/{{ $post->id }}/edit">編集</a>
-            </div>
-            
+
             <!--投稿情報-->
             <h2 class"name">
                 {{ $post->name }}
@@ -51,12 +47,12 @@
                 <!-- ハートボタン -->
             @if($like)
                 <!--いいね状態-->
-                <a href="{{ route('unlike', $post) }}" class="btn btn-link btn-sm">
+                <a href="{{ route('unlike', ['post' => $post->id]) }}" class="btn btn-link btn-sm">
                     <i class="fas fa-heart fa-2x text-danger" style="color: red;"></i>
                 </a>
             @else
                 <!--いいねしていない状態-->
-                <a href="{{ route('like', $post) }}" class="btn btn-link btn-sm">
+                <a href="{{ route('like', ['post' => $post->id]) }}" class="btn btn-link btn-sm">
                     <i class="far fa-heart fa-2x text-secondary" style="color: red;"></i>
                 </a>
             @endif
@@ -64,29 +60,10 @@
             <div class="like_counte">
                 {{ $post->likes->count() }}
             </div>
-            
-            
-            <!--投稿削除ボタン-->
-            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
-                 @csrf
-                 @method('DELETE')
-                <button type="button" onclick="deletePost({{ $post->id }})">削除<br><br></button>
-            </form>
-
 
             <div class="footer">
-                <a href="/">マイページへ</a>
+                <a href="/likes">いいね一覧へ</a>
             </div>
-            
-            <!--削除確認のダイヤログ表示-->
-            <script>
-                function deletePost(id) {
-                    'use strict'
-                    if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                        document.getElementById(`form_${id}`).submit();
-                    }
-                }
-            </script>
             
         </body>
     </x-app-layout>

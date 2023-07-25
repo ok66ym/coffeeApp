@@ -29,13 +29,24 @@ class CoffeePost extends Model
       'explanation',
     ];
     
-    
+    //ぺジネーションについての関数
     public function getPaginateBylimit($user_id, int $limit_count = 10) {
         return $this::with('user')->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
+    //usersテーブルとのリレーション
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    
+    //coffeepost_userテーブルとのリレーション
+    // public function likes() {
+    //     return $this->hasMany(Like::class);
+    // }
+   public function likes()
+    {
+        return $this->belongsToMany(User::class, 'coffeepost_user', 'coffeepost_id', 'user_id');
+    }
+
 }
