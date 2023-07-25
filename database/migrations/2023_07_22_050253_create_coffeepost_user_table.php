@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('coffeepost_id')->constrained('coffeeposts');   //参照先のテーブル名をonstrainedに記載
             $table->foreignId('user_id')->constrained('users');
             $table->primary(['coffeepost_id', 'user_id']); 
+            $table->timestamps();
         });
     }
 

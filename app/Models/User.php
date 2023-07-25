@@ -43,13 +43,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    //ぺジネーションについての関数
+    public function getOwnPaginateByLimit(int $limit_count = 5){
+        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    //coffeepostsテーブルとのリレーション
     public function posts(){
         return $this->hasMany(CoffeePost::class);
     }
     
-    //
-    public function getOwnPaginateByLimit(int $limit_count = 5){
-        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    //coffeepost_userテーブルとのリレーション
+    // public function likes() {
+    //     return $this->hasMany(Like::class);
+    // }
+    
+    public function likes()
+    {
+        return $this->belongsToMany(CoffeePost::class, 'coffeepost_user', 'user_id', 'coffeepost_id');
     }
+
 
 }
