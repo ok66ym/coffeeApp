@@ -27,6 +27,7 @@ class CoffeePost extends Model
       'smell',
       'roasted',
       'explanation',
+      'image'
     ];
     
     //ぺジネーションについての関数

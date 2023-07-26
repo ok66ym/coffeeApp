@@ -56,6 +56,7 @@
                     <i class="far fa-heart fa-2x text-secondary" style="color: red;"></i>
                 </a>
             @endif
+
             <!-- いいねの数 -->
             <div class="like_counte">
                 {{ $post->likes->count() }}

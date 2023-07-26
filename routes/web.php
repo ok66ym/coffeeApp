@@ -53,6 +53,14 @@ Route::middleware(['auth'])->group(function(){
    Route::get('/posts/unlike/{post}', [LikeController::class, 'unlike'])->name('unlike');   //いいねをはずす
 });
 
+//画像投稿に関するルーティング
+// Route::middleware(['auth'])->group(function() {
+//     //画像をアップロードする．
+//     Route::get('/upload', [UploadController::class, 'index'])->name('images.index');
+//     Route::get('/create', [UploadController::class, 'cretae'])->name('images.create');
+//     Route::get('/store', [UploadController::class, 'store'])->name('images.store');
+// });
+
 //Breeze機能の認証機能
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

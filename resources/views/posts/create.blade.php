@@ -88,9 +88,9 @@
                 </div>
                 <p class="explanation_error" style="color:red">{{ $errors->first('post.explanation') }}</p>
                 
+                
                 <!--投稿ボタンの実装-->
                 <input type="submit" value="投稿"/>
-            </form>
             
             <div class="footer">
                 <a href="/">トップページへ</a>
