@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>マイページ</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
     <x-app-layout>
-        <body>
             <!--認証済みのuser表示-->
             {{ Auth::user() -> name }} 
             
@@ -18,6 +9,14 @@
             <h1>投稿</h1>
             <div class='posts'>
                 @foreach ($posts as $post)
+                    <!--画像表示-->
+                    @if($post->image)
+                    <div class='post_image'>
+                        <img src="{{ $post->image }}" alt="画像が読み込めません。"/>
+                    </div>
+                    @endif
+                    
+                    <!--コーヒー名を表示-->
                     <div class='post'>
                         <h2 class='name'>
                             <a href="/posts/{{ $post->id }}">{{ $post->name }}</a>
@@ -30,6 +29,4 @@
             <div class='paginate'>
                 {{$posts->links()}}
             </div>
-        </body>
     </x-app-layout>
-</html>

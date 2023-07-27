@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CoffeePost;                      //CoffeePostモデル使用のためのuse宣言
+use App\Models\CoffeePost;                  //CoffeePostモデル使用のためのuse宣言
 use App\Http\Requests\CoffeePostRequest;
-use App\Models\Like;                     //Likeモデル使用のための宣言
+use App\Models\Like;                        //Likeモデル使用のための宣言
 use Illuminate\Support\Facades\Auth;
+use Cloudinary;                             //画像投稿機能のための宣言．Cloudinaryを使用する
 
 class CoffeePostController extends Controller
 {
@@ -33,10 +34,19 @@ class CoffeePostController extends Controller
     
     // 投稿保存
     public function store(CoffeePostRequest $request, CoffeePost $post) {
-        // dd(Auth::user()->posts());  //投稿者のデータのみを表示
-        $input = $request['post'];                          //['post']：ビューファイル上でのpost[bitter]などのリクエストパラメータを取得する．
-        $input += ['user_id' => $request->user()->id];      //投稿に紐付いたuser_idを取得し，変数inputに入れる．
-        $post->fill($input)->save();                        //保存処理
+        
+        //投稿機能
+        $input = $request['post'];                              //['post']：ビューファイル上でのpost[bitter]などのリクエストパラメータを取得する．
+        $input += ['user_id' => $request->user()->id];          //投稿に紐付いたuser_idを取得し，変数inputに入れる．
+        
+        //画像投稿機能
+        if($request->file('image')) {                           //画像ファイルが送られたときのみ以下の処理を実行
+            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();       //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
+            $input += ['image' => $image_url];                      //imageカラムにimageurlの情報を入れ，$inputに代入している．?
+        }
+        
+        //投稿内容を保存
+        $post->fill($input)->save();                            //保存処理
         return redirect('/posts/' . $post->id);
     }
     

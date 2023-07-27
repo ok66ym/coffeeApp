@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function(){
    Route::get('/posts/{post}/edit', [CoffeePostController::class, 'edit']);                //投稿編集表示
 });
 
-//いいねした投稿関係のルーティング
+//いいねした投稿表示関係のルーティング
 Route::middleware(['auth'])->group(function(){
     Route::get('/likes', [LikeController::class, 'likeindex'])->name('likes.index');                //いいねした投稿一覧
     Route::get('/likes/{post}', [LikeController::class, 'likeshow'])->name('likes.likeshow');       //いいねした投稿詳細
@@ -52,14 +52,6 @@ Route::middleware(['auth'])->group(function(){
    //いいねをはずす
    Route::get('/posts/unlike/{post}', [LikeController::class, 'unlike'])->name('unlike');   //いいねをはずす
 });
-
-//画像投稿に関するルーティング
-// Route::middleware(['auth'])->group(function() {
-//     //画像をアップロードする．
-//     Route::get('/upload', [UploadController::class, 'index'])->name('images.index');
-//     Route::get('/create', [UploadController::class, 'cretae'])->name('images.create');
-//     Route::get('/store', [UploadController::class, 'store'])->name('images.store');
-// });
 
 //Breeze機能の認証機能
 Route::middleware('auth')->group(function () {

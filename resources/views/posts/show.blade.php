@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>投稿詳細</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <!--FontAwesomeの導入-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-        <!--CSSファイルの読み込み-->
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    </head>
-    <x-app-layout>
-        <body>
+<x-app-layout>
             <!--投稿編集ページへ-->
             <div class="edit">
                 <a href="/posts/{{ $post->id }}/edit">編集</a>
             </div>
             
             <!--投稿情報-->
+            <!--画像表示-->
+            @if($post->image)
+            <div class='post_image'>
+                <img src="{{ $post->image }}" alt="画像が読み込めません。"/>
+            </div>
+            @endif
+            
             <h2 class"name">
                 {{ $post->name }}
             </h2>
@@ -87,7 +81,4 @@
                     }
                 }
             </script>
-            
-        </body>
-    </x-app-layout>
-</html>
+</x-app-layout>
