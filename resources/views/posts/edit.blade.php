@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>投稿編集</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <x-app-layout>
-        <body>
+<x-app-layout>
             <h1>投稿編集</h1>
             <div class="posts">
                 <form action='/posts/{{ $post->id }}' method="POST">
@@ -104,6 +95,4 @@
             <div class="footer">
                 <a href="/posts/{{ $post->id }}">戻る</a>
             </div>
-        </body>
     </x-app-layout>
-</html>

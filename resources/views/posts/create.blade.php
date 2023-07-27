@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>投稿作成</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
-    <x-app-layout>
-        <body>
+<x-app-layout>
             <h1>投稿作成</h1>
-            <form action='/posts' method="POST">
+            <form action="/posts" method="POST" enctype="multipart/form-data">
                 @csrf
                 
                 <!--コーヒー名を記録-->
@@ -88,13 +79,16 @@
                 </div>
                 <p class="explanation_error" style="color:red">{{ $errors->first('post.explanation') }}</p>
                 
+                <!--画像投稿機能実装-->
+                <div class="image">
+                    <input type="file" name="image">
+                </div>
                 
                 <!--投稿ボタンの実装-->
                 <input type="submit" value="投稿"/>
+            </form>
             
             <div class="footer">
                 <a href="/">トップページへ</a>
             </div>
-        </body>
-    </x-app-layout>
-</html>
+</x-app-layout>

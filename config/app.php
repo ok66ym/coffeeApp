@@ -194,6 +194,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        //cloudinaryphp artisan vendor:publish --provider="CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider" --tag="cloudinary-laravel-config"
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
 
     ],
 
