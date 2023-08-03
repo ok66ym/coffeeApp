@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('likes.index')" :active="request()->routeIs('likes.index')">
                         {{ __('いいね') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('searches.index')" :active="request()->routeIs('searches.index')">
+                        {{ __('検索') }}
+                    </x-nav-link>
                 </div>
             </div>
 

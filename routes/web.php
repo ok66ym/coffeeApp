@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoffeePostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,15 +43,26 @@ Route::middleware(['auth'])->group(function(){
 //いいねした投稿表示関係のルーティング
 Route::middleware(['auth'])->group(function(){
     Route::get('/likes', [LikeController::class, 'likeindex'])->name('likes.index');                //いいねした投稿一覧
-    Route::get('/likes/{post}', [LikeController::class, 'likeshow'])->name('likes.likeshow');       //いいねした投稿詳細
+    //いいねした投稿詳細表示
+    Route::get('/likes/posts/{post}', [LikeController::class, 'likeshowPost'])->name('likes.likeshowPost');
+    //いいねしたデータベース上のコーヒー詳細表示
+    Route::get('/likes/coffees/{coffee}', [LikeController::class, 'likeshowCoffee'])->name('likes.likeshowCoffee');
 });
 
 //投稿にいいねする関係のルーティング
 Route::middleware(['auth'])->group(function(){
-   //いいねをつける
-   Route::get('/posts/like/{post}', [LikeController::class, 'like'])->name('like');         //いいねする
-   //いいねをはずす
-   Route::get('/posts/unlike/{post}', [LikeController::class, 'unlike'])->name('unlike');   //いいねをはずす
+   Route::get('/posts/like/{post}', [LikeController::class, 'likeCoffeePost'])->name('likeCoffeePost');         //いいねする
+   Route::get('/posts/unlike/{post}', [LikeController::class, 'unlikeCoffeePost'])->name('unlikeCoffeePost');   //いいねをはずす
+   Route::get('/search/db/results/like/{coffee}', [LikeController::class, 'LikeCoffee'])->name('likeCoffee');
+   Route::get('/search/db/results/unlike/{coffee}', [LikeController::class, 'unlikeCoffee'])->name('unlikeCoffee');
+});
+
+//検索機能ページへの遷移
+Route::middleware(['auth'])->group(function(){
+    Route::get('/search', [SearchController::class, 'search'])->name('searches.index');                  //検索選択ページ
+    Route::get('/search/db', [SearchController::class, 'dbsearch'])->name('search.dbsearch');            //データベース検索ページ
+    Route::get('/search/db/results', [SearchController::class, 'dbresult'])->name('search.dbresults');   //データベース検索結果
+    Route::get('/search/posts', [SearchController::class, 'postsearch'])->name('search.postsearch');     //投稿検索ページ
 });
 
 //Breeze機能の認証機能

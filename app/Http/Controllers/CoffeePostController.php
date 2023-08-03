@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CoffeePost;                  //CoffeePostモデル使用のためのuse宣言
 use App\Http\Requests\CoffeePostRequest;
-use App\Models\Like;                        //Likeモデル使用のための宣言
+use App\Models\LikeCoffeePost;                        //Likeモデル使用のための宣言
+use App\Models\LikeCoffee;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;                             //画像投稿機能のための宣言．Cloudinaryを使用する
 
@@ -55,7 +56,7 @@ class CoffeePostController extends Controller
     //ログインユーザーが投稿に対して「いいね」をしている場合，$niceに値が入る．
     public function show(CoffeePost $post) {
         // $like = Like::where('coffeepost_id', $post->id)->where('user_id', auth()->user()->id)->first();
-        $like = auth()->user()->likes()->where('id', $post->id)->first();
+        $like = auth()->user()->likesCoffeePosts()->where('id', $post->id)->first();
         return view('posts.show', compact('post', 'like'));
     }
     

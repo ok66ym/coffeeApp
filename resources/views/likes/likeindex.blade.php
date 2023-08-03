@@ -1,26 +1,40 @@
 <x-app-layout>
-            <!--投稿内容を表示-->
-            <h1>投稿</h1>
-            <div class='likes'>
-                @foreach ($likes as $post)
-                    <!--画像表示-->
-                    @if($post->image)
-                    <div class='post_image'>
-                        <img src="{{ $post->image }}" alt="画像が読み込めません。"/>
-                    </div>
-                    @endif
+            <!--いいねし投稿・データを表示-->
+            <h1>いいね</h1>
+            <div class='likesCoffeePosts'>
+                @foreach ($likesPosts as $post)
                     
                     <!--コーヒー名表示-->
-                    <div class='post'>
-                        <h2 class='name'>
-                            <a href={{ route('likes.likeshow', ['post' => $post->id]) }}>{{ $post->name }}</a>
+                    <div class='likesposts'>
+                        <h2 class='likesCoffeePosts_name'>
+                            <a href={{ route('likes.likeshowPost', ['post' => $post->id]) }}>{{ $post->name }}(みんなの投稿)</a>
                         </h2>
+                    </div>
+                    
+                    <!--コーヒーの評価項目表示-->
+                    <div class='post_info'>
+                        苦味：{{ $post->bitter }} &nbsp 酸味：{{ $post->acidity }} &nbsp コク：{{ $post->rich }} &nbsp 甘味：{{ $post->sweet }} &nbsp 香り：{{ $post->smell }}
                     </div>
                 @endforeach
             </div>
             
-            <!--ページネーション実装．投稿内容の10分を表示-->
-            <div class='paginate'>
-                {{$likes->links()}}
+            <div class='likesCoffees'>
+                @foreach ($likesCoffees as $coffee)
+                    
+                    <!--コーヒー名表示-->
+                    <div class='likescoffee'>
+                        <h2 class='likesCoffee_name'>
+                            <a href={{ route('likes.likeshowCoffee', ['coffee' => $coffee->id]) }}>{{ $coffee->name }}</a>
+                        </h2>
+                    </div>
+                    
+                    <!--コーヒーの評価項目表示-->
+                    <div class='post_info'>
+                        苦味：{{ $coffee->bitter }} &nbsp 酸味：{{ $coffee->acidity }} &nbsp コク：{{ $coffee->rich }} &nbsp 甘味：{{ $coffee->sweet }} &nbsp 香り：{{ $coffee->smell }}
+                    </div>
+                @endforeach
             </div>
+            
+            <!--ページネーション実装．投稿内容の10個分を表示-->
+            
 </x-app-layout>

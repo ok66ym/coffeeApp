@@ -52,14 +52,16 @@ class User extends Authenticatable
         return $this->hasMany(CoffeePost::class);
     }
     
-    //coffeepost_userテーブルとのリレーション
-    // public function likes() {
-    //     return $this->hasMany(Like::class);
-    // }
-    
-    public function likes()
+    // CoffeePostsへのいいね
+    public function likesCoffeePosts()
     {
         return $this->belongsToMany(CoffeePost::class, 'coffeepost_user', 'user_id', 'coffeepost_id');
+    }
+
+    // Coffeesへのいいね
+    public function likesCoffees()
+    {
+        return $this->belongsToMany(Coffee::class, 'coffee_user', 'user_id', 'coffee_id');
     }
 
 
