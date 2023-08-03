@@ -45,12 +45,12 @@
                 <!-- ハートボタン -->
             @if($like)
                 <!--いいね状態-->
-                <a href="{{ route('unlike', $post) }}" class="btn btn-link btn-sm">
+                <a href="{{ route('unlikeCoffeePost', $post) }}" class="btn btn-link btn-sm">
                     <i class="fas fa-heart fa-2x text-danger" style="color: red;"></i>
                 </a>
             @else
                 <!--いいねしていない状態-->
-                <a href="{{ route('like', $post) }}" class="btn btn-link btn-sm">
+                <a href="{{ route('likeCoffeePost', $post) }}" class="btn btn-link btn-sm">
                     <i class="far fa-heart fa-2x text-secondary" style="color: red;"></i>
                 </a>
             @endif
