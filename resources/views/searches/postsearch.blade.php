@@ -1,35 +1,66 @@
 <x-app-layout>
-            <h1>投稿作成</h1>
-            <form action="/posts" method="POST" enctype="multipart/form-data">
-                @csrf
-                <!--コーヒーを5つの項目で評価-->
-                <h2>コーヒーを評価</h2>
-                <div class="bitter">
-                    <h2>苦味</h2>
-                    <input type="text" name="post[bitter]" placeholder="5" value="{{ old('post.bitter') }}"/>
-                <p class="bitter_error" style="color:red">{{ $errors->first('post.bitter') }}</p>
-                <div class="acidity">
-                    <h2>酸味</h2>
-                    <input type="text" name="post[acidity]" placeholder="2" value="{{ old('post.acidity') }}"/>
-                </div>
-                <p class="acidity_error" style="color:red">{{ $errors->first('post.acidity') }}</p>
-                <div class="rich">
-                    <h2>コク</h2>
-                    <input type="text" name="post[rich]" placeholder="4" value="{{ old('post.rich') }}"/>
-                </div>
-                <p class="rich_error" style="color:red">{{ $errors->first('post.rich') }}</p>
-                <div class="sweet">
-                    <h2>甘味</h2>
-                    <input type="text" name="post[sweet]" placeholder="3" value="{{ old('post.sweet') }}"/>
-                </div> 
-                <p class="sweet_error" style="color:red">{{ $errors->first('post.sweet') }}</p>
-                <div class="smell">
-                    <h2>香り</h2>
-                    <input type="text" name="post[smell]" placeholder="5" value="{{ old('post.smell') }}"/>
-                </div> 
-                <p class="smell_error" style="color:red">{{ $errors->first('post.smell') }}</p>
+            <form action="/search/posts/results" method="GET">
                 
-                <!--投稿ボタンの実装-->
-                <input type="submit" value="投稿"/>
+                <div class="postsearch_bitter">
+                    <h2>苦味</h2>
+                    <input type="range" id="postbitter" min="1" max="5" step="0.5" name="post[bitter]" value="0"/>
+                    <p><span id="current-postbitter"></span></p>
+                </div>
+                    
+                <div class="postsearch_acidity">
+                    <h2>酸味</h2>
+                    <input type="range" id="postacidity" min="1" max="5" step="0.5" name="post[acidity]" value="0"/>
+                    <p><span id="current-postacidity"></span></p>
+                </div>
+                
+                <div class="postsearch_rich">
+                    <h2>コク</h2>
+                    <input type="range" id="postrich" min="1" max="5" step="0.5" name="post[rich]" value="0"/>
+                    <p><span id="current-postrich"></span></p>
+                </div>
+                
+                <div class="postsearch_sweet">
+                    <h2>甘味</h2>
+                    <input type="range" id="postsweet" min="1" max="5" step="0.5" name="post[sweet]" value="0"/>
+                    <p><span id="current-postsweet"></span></p>
+                </div>
+                
+                <div class="postsearch_smell">
+                    <h2>香り</h2>
+                    <input type="range" id="postsmell" min="1" max="5" step="0.5" name="post[smell]" value="0"/>
+                    <p><span id="current-postsmell"></span></p>
+                </div>
+                
+                <!--検索ボタンの実装-->
+                <input type="submit" value="検索"/>
             </form>
+            
+            
+            <script>
+                window.onload = () => {
+                    const sliders = [
+                        { inputId: 'postbitter', spanId: 'current-postbitter' },
+                        { inputId: 'postacidity', spanId: 'current-postacidity' },
+                        { inputId: 'postrich', spanId: 'current-postrich' },
+                        { inputId: 'postsweet', spanId: 'current-postsweet' },
+                        { inputId: 'postsmell', spanId: 'current-postsmell' },
+                    ];
+                
+                    sliders.forEach((slider) => {
+                        const inputElement = document.getElementById(slider.inputId);
+                        const spanElement = document.getElementById(slider.spanId);
+                
+                        const setCurrentValue = (val) => {
+                            spanElement.innerText = val;
+                        };
+                
+                        const rangeOnChange = (e) => {
+                            setCurrentValue(e.target.value);
+                        };
+                
+                        inputElement.addEventListener('input', rangeOnChange);
+                        setCurrentValue(inputElement.value);
+                    });
+                }
+            </script>
 </x-app-layout>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class LikeCoffee extends Model
 {
@@ -15,6 +16,10 @@ class LikeCoffee extends Model
       'user_id',
       'coffee_id',
     ];
+    
+    public function getOwnLikedCoffeesPaginateByLimit($user_id, int $limit_count = 5){
+        return $this::with('user')->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
     
     public function coffee() {
         return $this->belongsTo(Coffee::class);

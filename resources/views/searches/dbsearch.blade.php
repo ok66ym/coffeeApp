@@ -3,31 +3,31 @@
                 
                 <div class="dbsearch_bitter">
                     <h2>苦味</h2>
-                    <input type="range" id="dbbitter" min="0" max="5" step="0.5" name="post[bitter]" value="0"/>
+                    <input type="range" id="dbbitter" min="1" max="5" step="0.5" name="db[bitter]" value="{{ old('db.bitter') }}"/>
                     <p><span id="current-dbbitter"></span></p>
                 </div>
                     
                 <div class="dbsearch_acidity">
                     <h2>酸味</h2>
-                    <input type="range" id="dbacidity" min="0" max="5" step="0.5" name="post[acidity]" value="0"/>
+                    <input type="range" id="dbacidity" min="1" max="5" step="0.5" name="db[acidity]" value="{{ old('db.acidity') }}"/>
                     <p><span id="current-dbacidity"></span></p>
                 </div>
                 
                 <div class="dbsearch_rich">
                     <h2>コク</h2>
-                    <input type="range" id="dbrich" min="0" max="5" step="0.5" name="post[rich]" value="0"/>
+                    <input type="range" id="dbrich" min="1" max="5" step="0.5" name="db[rich]" value="{{ old('db.rich') }}"/>
                     <p><span id="current-dbrich"></span></p>
                 </div>
                 
                 <div class="dbsearch_sweet">
                     <h2>甘味</h2>
-                    <input type="range" id="dbsweet" min="0" max="5" step="0.5" name="post[sweet]" value="0"/>
+                    <input type="range" id="dbsweet" min="1" max="5" step="0.5" name="db[sweet]" value="{{ old('db.sweet') }}"/>
                     <p><span id="current-dbsweet"></span></p>
                 </div>
                 
                 <div class="dbsearch_smell">
                     <h2>香り</h2>
-                    <input type="range" id="dbsmell" min="0" max="5" step="0.5" name="post[smell]" value="0"/>
+                    <input type="range" id="dbsmell" min="1" max="5" step="0.5" name="db[smell]" value="{{ old('db.smell') }}"/>
                     <p><span id="current-dbsmell"></span></p>
                 </div>
                 

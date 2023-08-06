@@ -33,8 +33,8 @@
                 
                 <!--コーヒー販売元のurlを記録-->
                 <div class="shopURL">
-                    <h2>販売元URL</h2>
-                    <input type="text" name="post[shop_url]" placeholder="販売店のURL https://~~~" value="{{ old('post.shop_url') }}"/>
+                    <h2>販売元URL(あれば)</h2>
+                    <input type="text" name="post[shop_url]" placeholder="https://~~~" value="{{ old('post.shop_url') }}"/>
                 </div>
                 <p class="ship_url_error" style="color:red">{{ $errors->first('post.shop_url') }}</p>
                 

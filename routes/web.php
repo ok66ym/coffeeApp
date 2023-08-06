@@ -42,19 +42,21 @@ Route::middleware(['auth'])->group(function(){
 
 //いいねした投稿表示関係のルーティング
 Route::middleware(['auth'])->group(function(){
-    Route::get('/likes', [LikeController::class, 'likeindex'])->name('likes.index');                //いいねした投稿一覧
-    //いいねした投稿詳細表示
-    Route::get('/likes/posts/{post}', [LikeController::class, 'likeshowPost'])->name('likes.likeshowPost');
+    Route::get('/likes', [LikeController::class, 'likeIndex'])->name('likes.index');                //いいね一覧画面へ
+    Route::get('/likes/coffees', [LikeController::class, 'likeCoffeeIndex'])->name('likes.coffeeindex');                //いいねした投稿一覧
+    Route::get('/likes/posts', [LikeController::class, 'likePostIndex'])->name('likes.postindex');                //いいねしたデータベース上のデータ一覧
     //いいねしたデータベース上のコーヒー詳細表示
-    Route::get('/likes/coffees/{coffee}', [LikeController::class, 'likeshowCoffee'])->name('likes.likeshowCoffee');
+    Route::get('/likes/coffee/{coffee}', [LikeController::class, 'likeshowCoffee'])->name('likes.likeshowCoffee');
+    //いいねした投稿詳細表示
+    Route::get('/likes/post/{post}', [LikeController::class, 'likeshowPost'])->name('likes.likeshowPost');
 });
 
 //投稿にいいねする関係のルーティング
 Route::middleware(['auth'])->group(function(){
-   Route::get('/posts/like/{post}', [LikeController::class, 'likeCoffeePost'])->name('likeCoffeePost');         //いいねする
-   Route::get('/posts/unlike/{post}', [LikeController::class, 'unlikeCoffeePost'])->name('unlikeCoffeePost');   //いいねをはずす
-   Route::get('/search/db/results/like/{coffee}', [LikeController::class, 'LikeCoffee'])->name('likeCoffee');
-   Route::get('/search/db/results/unlike/{coffee}', [LikeController::class, 'unlikeCoffee'])->name('unlikeCoffee');
+   Route::get('/search/posts/results/like/{post}', [LikeController::class, 'likeCoffeePost'])->name('likeCoffeePost');              //投稿内容についていいねする
+   Route::get('/search/posts/results/unlike/{post}', [LikeController::class, 'unlikeCoffeePost'])->name('unlikeCoffeePost');        //投稿内容いいねをはずす
+   Route::get('/search/db/results/like/{coffee}', [LikeController::class, 'LikeCoffee'])->name('likeCoffee');                       //DBのデータに対していいねをする
+   Route::get('/search/db/results/unlike/{coffee}', [LikeController::class, 'unlikeCoffee'])->name('unlikeCoffee');                 //DBのデータに対していいねをはずす
 });
 
 //検索機能ページへの遷移
@@ -63,6 +65,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/search/db', [SearchController::class, 'dbsearch'])->name('search.dbsearch');            //データベース検索ページ
     Route::get('/search/db/results', [SearchController::class, 'dbresult'])->name('search.dbresults');   //データベース検索結果
     Route::get('/search/posts', [SearchController::class, 'postsearch'])->name('search.postsearch');     //投稿検索ページ
+    Route::get('/search/posts/results', [SearchController::class, 'postresult'])->name('search.postresults');   //投稿検索結果
 });
 
 //Breeze機能の認証機能
