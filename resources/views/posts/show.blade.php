@@ -54,6 +54,7 @@
                     <i class="far fa-heart fa-2x text-secondary" style="color: red;"></i>
                 </a>
             @endif
+            
             <!-- いいねの数 -->
             <div class="like_counte">
                 {{ $post->likes->count() }}
@@ -64,7 +65,7 @@
             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                  @csrf
                  @method('DELETE')
-                <button type="button" onclick="deletePost({{ $post->id }})">削除<br><br></button>
+                <button type="button" onclick="deletePost({{ $post->id }})">投稿を削除<br><br></button>
             </form>
 
 

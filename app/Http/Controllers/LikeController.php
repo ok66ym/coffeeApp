@@ -12,16 +12,32 @@ use App\Models\CoffeePost;
 
 class LikeController extends Controller
 {
+    public function likeIndex() {
+        return view('likes.likeindex');
+    }
     
     //いいねした投稿一覧表示
-    public function likeindex() {
-        //ログインユーザーがいいねした投稿を取得
-        $likesPosts = auth()->user()->likesCoffeePosts()->paginate(10);
+    public function likePostIndex(LikeCoffeePost $coffeepost) {
         
-        //ログインユーザーがいいねしたデータベース上のデータを取得
-        $likesCoffees = auth()->user()->likesCoffees()->paginate(10);
+        $userId = Auth::id();
         
-        return view('likes.likeindex', ['likesPosts' => $likesPosts, 'likesCoffees' => $likesCoffees ]);
+        // ページネーション
+        //ログインユーザーがいいねした投稿のデータを取得
+        $likesPosts = $coffeepost->getOwnLikedCoffeePostsPaginateByLimit($userId);
+        
+        return view('likes.likePostindex', ['likesPosts' => $likesPosts]);
+    }
+    
+    //いいねしたデータベース上のデータ一覧表示
+    public function likeCoffeeIndex(LikeCoffee $coffee) {
+        
+        $userId = Auth::id();
+        
+        // ページネーション
+        //ログインユーザーがいいねした投稿のデータを取得
+        $likesCoffees = $coffee->getOwnLikedCoffeesPaginateByLimit($userId);
+        
+        return view('likes.likeCoffeeindex', ['likesCoffees' => $likesCoffees ]);
     }
     
     //いいねした投稿詳細表示
