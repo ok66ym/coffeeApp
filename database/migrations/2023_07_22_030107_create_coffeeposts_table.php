@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('image')->nullable();                //画像
             $table->text('explanation');                        //珈琲豆の説明文
             $table->string('shop_name', 200);                   //販売店名．100文字以内
-            $table->string('shop_url', 200);                    //珈琲豆の販売サイト．100文字以内
+            $table->string('shop_url', 200)->nullable();        //珈琲豆の販売サイト．100文字以内
             $table->string('official_url', 200) ->nullable();   //販売店の公式URL 投稿画面に表示するか迷い中
             $table->string('map')->nullable();                  //google map
             $table->timestamps();                               //created_at, updated_atの追加
