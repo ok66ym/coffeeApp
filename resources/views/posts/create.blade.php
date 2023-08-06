@@ -75,7 +75,7 @@
                 <!--投稿するコーヒーについての説明-->
                 <div class="body">
                     <h2>説明</h2>
-                    <textarea name="post[explanation]" placeholder="苦味が強く，香りが特徴的なコーヒー．" value="{{old('post.explanation')}}"></textarea>
+                    <textarea name="post[explanation]" placeholder="苦味が強く，香りが特徴的なコーヒー．">{{old('post.explanation')}}</textarea>
                 </div>
                 <p class="explanation_error" style="color:red">{{ $errors->first('post.explanation') }}</p>
                 

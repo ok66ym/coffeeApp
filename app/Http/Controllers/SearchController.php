@@ -79,9 +79,9 @@ class SearchController extends Controller
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
             
             $dbsearch = $dbsearches->map(function ($dbsearch) use ($dbsearchInfo) {
-            $input_sum = $dbsearchInfo['bitter'] + $dbsearchInfo['acidity'] + $dbsearchInfo['rich'] + $dbsearchInfo['sweet'] + $dbsearchInfo['smell'];
-            $post_sum = $dbsearch->bitter + $dbsearch->acidity + $dbsearch->rich + $dbsearch->sweet + $dbsearch->smell;
-            $match_percentage = ($input_sum / $post_sum) * 100;
+                $input_sum = $dbsearchInfo['bitter'] + $dbsearchInfo['acidity'] + $dbsearchInfo['rich'] + $dbsearchInfo['sweet'] + $dbsearchInfo['smell'];
+                $post_sum = $dbsearch->bitter + $dbsearch->acidity + $dbsearch->rich + $dbsearch->sweet + $dbsearch->smell;
+                $match_percentage = ($input_sum / $post_sum) * 100;
                 
                 if ($match_percentage >= 100) {
                     $dbsearch->rating = 5;
@@ -107,6 +107,11 @@ class SearchController extends Controller
                 
                 return $dbsearch;
             });
+            
+        // 検索値をセッションに保存
+        $request->session()->put('search_values', $request->input('db'));
+
+        
         return view('searches.dbresults')->with(['dbsearches' => $dbsearches, 'dbsearchInfo' => $dbsearchInfo]);
         
     }
@@ -180,37 +185,41 @@ class SearchController extends Controller
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
         
         $postsearches = $postsearches->map(function ($postsearch) use ($postsearchInfo) {
-        $input_sum = $postsearchInfo['bitter'] + $postsearchInfo['acidity'] + $postsearchInfo['rich'] + $postsearchInfo['sweet'] + $postsearchInfo['smell'];
-        $post_sum = $postsearch->bitter + $postsearch->acidity + $postsearch->rich + $postsearch->sweet + $postsearch->smell;
-        $match_percentage = ($input_sum / $post_sum) * 100;
-
-        $postsearch->match_percentage = $match_percentage;
-        
-        if ($match_percentage >= 100) {
-            $postsearch->rating = 5;
-        } elseif ($match_percentage >= 90) {
-            $postsearch->rating = 4.5;
-        } elseif ($match_percentage >= 80) {
-            $postsearch->rating = 4;
-        } elseif ($match_percentage >= 70) {
-            $postsearch->rating = 3.5;
-        } elseif ($match_percentage >= 50) {
-            $postsearch->rating = 3;
-        } elseif ($match_percentage >= 40) {
-            $postsearch->rating = 2.5;
-        } elseif ($match_percentage >= 30) {
-            $postsearch->rating = 2;
-        } elseif ($match_percentage >= 20) {
-            $postsearch->rating = 1.5;
-        } elseif ($match_percentage >= 10) {
-            $postsearch->rating = 1;
-        } else {
-            $postsearch->rating = 0;
-        }
-        
-        return $postsearch;
-        
+            $input_sum = $postsearchInfo['bitter'] + $postsearchInfo['acidity'] + $postsearchInfo['rich'] + $postsearchInfo['sweet'] + $postsearchInfo['smell'];
+            $post_sum = $postsearch->bitter + $postsearch->acidity + $postsearch->rich + $postsearch->sweet + $postsearch->smell;
+            $match_percentage = ($input_sum / $post_sum) * 100;
+    
+            $postsearch->match_percentage = $match_percentage;
+            
+            if ($match_percentage >= 100) {
+                $postsearch->rating = 5;
+            } elseif ($match_percentage >= 90) {
+                $postsearch->rating = 4.5;
+            } elseif ($match_percentage >= 80) {
+                $postsearch->rating = 4;
+            } elseif ($match_percentage >= 70) {
+                $postsearch->rating = 3.5;
+            } elseif ($match_percentage >= 50) {
+                $postsearch->rating = 3;
+            } elseif ($match_percentage >= 40) {
+                $postsearch->rating = 2.5;
+            } elseif ($match_percentage >= 30) {
+                $postsearch->rating = 2;
+            } elseif ($match_percentage >= 20) {
+                $postsearch->rating = 1.5;
+            } elseif ($match_percentage >= 10) {
+                $postsearch->rating = 1;
+            } else {
+                $postsearch->rating = 0;
+            }
+            
+            return $postsearch;
+            
         });
+        
+        //検索値をセッションに保存
+        $request->session()->put('search_values', $request->input('post'));
+    
         return view('searches.postresults')->with(['postsearches' => $postsearches, 'postsearchInfo' => $postsearchInfo]);
     }
 }
