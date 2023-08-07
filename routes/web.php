@@ -68,6 +68,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/search/posts/results', [SearchController::class, 'postresult'])->name('search.postresults');   //投稿検索結果
 });
 
+//検索機能保存機能関係のルーティング
+Route::middleware('auth')->group(function () {
+    Route::post('/searches/db/store', [SearchStoreController::class, 'sbstore'])->name('searchestores.dbstore');
+    Route::post('/searches/posts/store', [SearchStoreController::class, 'poststore'])->name('searchestores.poststore');
+});
+
 //Breeze機能の認証機能
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
