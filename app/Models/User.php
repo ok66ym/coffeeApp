@@ -63,6 +63,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Coffee::class, 'coffee_user', 'user_id', 'coffee_id');
     }
+    
+    public function searchStores() {
+        return $this->hasMany(SearchStore::class);
+    }
 
 
 }
