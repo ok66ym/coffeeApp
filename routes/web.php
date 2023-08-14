@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoffeePostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SearchStoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,17 +62,21 @@ Route::middleware(['auth'])->group(function(){
 
 //検索機能ページへの遷移
 Route::middleware(['auth'])->group(function(){
-    Route::get('/search', [SearchController::class, 'search'])->name('searches.index');                  //検索選択ページ
-    Route::get('/search/db', [SearchController::class, 'dbsearch'])->name('search.dbsearch');            //データベース検索ページ
-    Route::get('/search/db/results', [SearchController::class, 'dbresult'])->name('search.dbresults');   //データベース検索結果
-    Route::get('/search/posts', [SearchController::class, 'postsearch'])->name('search.postsearch');     //投稿検索ページ
+    Route::get('/search', [SearchController::class, 'search'])->name('searches.index');                         //検索選択ページ
+    Route::get('/search/db', [SearchController::class, 'dbsearch'])->name('search.dbsearch');                   //データベース検索ページ
+    Route::get('/search/db/results', [SearchController::class, 'dbresult'])->name('search.dbresults');          //データベース検索結果
+    Route::get('/search/posts', [SearchController::class, 'postsearch'])->name('search.postsearch');            //投稿検索ページ
     Route::get('/search/posts/results', [SearchController::class, 'postresult'])->name('search.postresults');   //投稿検索結果
+    //再検索
+    Route::get('/research/db/results', [SearchController::class, 'redbresult'])->name('search.redbresults');                 //検索履歴からデータベースを再検索結果
+    Route::get('/research/posts/results', [SearchController::class, 'repostresult'])->name('search.repostresults');         //検索履歴からみんなの投稿を再検索結果
 });
 
 //検索機能保存機能関係のルーティング
 Route::middleware('auth')->group(function () {
-    Route::post('/searches/db/store', [SearchStoreController::class, 'sbstore'])->name('searchestores.dbstore');
-    Route::post('/searches/posts/store', [SearchStoreController::class, 'poststore'])->name('searchestores.poststore');
+    Route::get('/histories', [SearchStoreController::class, 'indexHistory'])->name('searchestores.index');                          //検索履歴一覧表示
+    Route::delete('/histories/alldelete', [SearchStoreController::class, 'allDeleteHistory'])->name('histories.alldelete');         //検索履歴を一括で削除
+    Route::delete('/histories/{searchstore}', [SearchStoreController::class, 'deleteHistory']);                                     //検索履歴は物理削除を採用．検索履歴を削除
 });
 
 //Breeze機能の認証機能

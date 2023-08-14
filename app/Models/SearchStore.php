@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\user;
 use App\Models\LikeCoffee;
 use App\Models\CoffeePost;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SearchStore extends Model
 {
     use HasFactory;
+    // use SoftDeletes;
     
     protected $table = 'searchstores';
     
@@ -21,7 +23,13 @@ class SearchStore extends Model
       'rich',
       'sweet',
       'smell',
+      'created_at',
     ];
+    
+    //ぺジネーションについての関数
+    public function getHistryPaginateBylimit($user_id, int $limit_count = 5) {
+        return $this::with('user')->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
     
     public function user() {
         return $this->belongsTo(User::class);

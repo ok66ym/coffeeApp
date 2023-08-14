@@ -33,7 +33,7 @@
             </h4>
             
             <h3>
-                販売店：<a href={{ $post->shop_url }}>{{ $post->shop_name }}</a>
+                販売店：<a href="{{ $post->shop_url }}" target="_blank">{{ $post->shop_name }}</a>
             </h3>
             
             <p><b>コーヒーについて</b><br>{{ $post->explanation }}</p>
