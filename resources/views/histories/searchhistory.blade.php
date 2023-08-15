@@ -1,4 +1,5 @@
     <x-app-layout>
+        <div class="pl-64">
             <!--投稿結果を表示-->
             <h1>検索履歴一覧</h1>
             
@@ -33,20 +34,21 @@
                 <div class="searchstore_pagination">
                     {{ $searchstores->links() }}
                 </div>
+        </div>
                 
-                <!--削除確認のダイヤログ表示-->
-                <script>
-                    function deletePost(id) {
-                        'use strict'
-                        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                            document.getElementById(`form_${id}`).submit();
-                        }
-                    }
+        <!--削除確認のダイヤログ表示-->
+        <script>
+            function deletePost(id) {
+                'use strict'
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
                     
-                    function deleteAllPosts() {
-                        if (confirm('全ての検索履歴を削除すると復元できません。\n本当に削除しますか？')) {
-                            this.event.target.form.submit();
-                        }
-                    }
-                </script>
+            function deleteAllPosts() {
+                if (confirm('全ての検索履歴を削除すると復元できません。\n本当に削除しますか？')) {
+                    this.event.target.form.submit();
+                }
+            }
+        </script>
     </x-app-layout>

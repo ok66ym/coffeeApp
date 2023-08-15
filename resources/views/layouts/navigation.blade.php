@@ -1,17 +1,26 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-orange-100 border-r h-screen fixed w-64 flex flex-col border border-black">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+           <!-- Logo and Toggle menu button -->
+            <div class="flex justify-between items-center pd-4">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
+                
+                <!-- Hamburger -->
+                <div class="-mr-2">
+                    <button @click="open = ! open" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    <!--... your SVG code ...-->
+                    </button>
+                </div>
+            </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <!-- Navigation Links - for larger screens -->
+                <div class="text-black space-y-2 mt-4">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -31,7 +40,29 @@
                         {{ __('検索履歴') }}
                     </x-nav-link>
                 </div>
-            </div>
+                
+                <!-- Responsive Navigation Menu -->
+                <div :class="{'block': open, 'hidden': ! open}" class="text-black space-y-2 mt-4">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                        {{ __('投稿一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
+                        {{ __('投稿') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('likes.index')" :active="request()->routeIs('likes.index')">
+                        {{ __('いいね') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('searches.index')" :active="request()->routeIs('searches.index')">
+                        {{ __('検索') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
+                        {{ __('検索履歴') }}
+                    </x-nav-link>
+                </div>
+            
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

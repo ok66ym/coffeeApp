@@ -240,7 +240,7 @@ class SearchController extends Controller
         $acidity = $request->input('acidity');
         $rich = $request->input('rich');
         $sweet = $request->input('sweet');
-        $smell = $request->input('xsmell');
+        $smell = $request->input('smell');
         
         //データ抽出アルゴリズム
         //重みを設定

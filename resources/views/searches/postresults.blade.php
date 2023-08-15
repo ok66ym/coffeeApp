@@ -1,4 +1,5 @@
     <x-app-layout>
+        <div class="pl-64">
             <!--投稿結果を表示-->
             <h1>検索結果一覧</h1>
             
@@ -52,5 +53,6 @@
             </div>
             
             <a href='/search/posts'>検索ページへ</a>
+        </div>
             
     </x-app-layout>

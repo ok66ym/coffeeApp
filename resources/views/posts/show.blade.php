@@ -1,4 +1,5 @@
 <x-app-layout>
+        <div class="pl-64">
             <!--投稿編集ページへ-->
             <div class="edit">
                 <a href="/posts/{{ $post->id }}/edit">編集</a>
@@ -72,6 +73,7 @@
             <div class="footer">
                 <a href="/">マイページへ</a>
             </div>
+        </div>
             
             <!--削除確認のダイヤログ表示-->
             <script>
