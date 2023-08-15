@@ -1,4 +1,5 @@
 <x-app-layout>
+        <div class="pl-64">
             <!--投稿情報-->
             
             <h2 class"likesCoffee_name">
@@ -49,4 +50,5 @@
             <div class="footer">
                 <a href="/likes">いいね一覧へ</a>
             </div>
+        </div>
 </x-app-layout>

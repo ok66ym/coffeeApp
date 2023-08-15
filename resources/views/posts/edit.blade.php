@@ -1,4 +1,5 @@
 <x-app-layout>
+        <div class="pl-64">
             <h1>投稿編集</h1>
             <div class="posts">
                 <form action='/posts/{{ $post->id }}' method="POST">
@@ -95,4 +96,5 @@
             <div class="footer">
                 <a href="/posts/{{ $post->id }}">戻る</a>
             </div>
+        </div>
     </x-app-layout>

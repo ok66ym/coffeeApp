@@ -17,7 +17,7 @@ class LikeCoffeePost extends Model
       'coffeepost_id',
     ];
     
-    public function getOwnLikedCoffeePostsPaginateByLimit($user_id, int $limit_count = 5){
+    public function getOwnLikedCoffeePostsPaginateByLimit($user_id, int $limit_count = 10){
         return $this::with('user')->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     

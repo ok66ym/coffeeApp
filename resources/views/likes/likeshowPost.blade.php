@@ -1,4 +1,5 @@
 <x-app-layout>
+        <div class="pl-64">
             <!--投稿情報-->
             <!--画像表示-->
             @if($post->image)
@@ -53,4 +54,5 @@
             <div class="footer">
                 <a href="/likes">いいね一覧へ</a>
             </div>
+        </div>
 </x-app-layout>

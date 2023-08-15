@@ -1,4 +1,5 @@
 <x-app-layout>
+        <div class="pl-64">
             <form action="/search/db/results" method="GET">
                 
                 <div class="dbsearch_bitter">
@@ -34,33 +35,34 @@
                 <!--検索ボタンの実装-->
                 <input type="submit" value="検索"/>
             </form>
+        </div>
             
             
-            <script>
-                window.onload = () => {
-                    const sliders = [
-                        { inputId: 'dbbitter', spanId: 'current-dbbitter' },
-                        { inputId: 'dbacidity', spanId: 'current-dbacidity' },
-                        { inputId: 'dbrich', spanId: 'current-dbrich' },
-                        { inputId: 'dbsweet', spanId: 'current-dbsweet' },
-                        { inputId: 'dbsmell', spanId: 'current-dbsmell' },
-                    ];
+        <script>
+            window.onload = () => {
+                const sliders = [
+                    { inputId: 'dbbitter', spanId: 'current-dbbitter' },
+                    { inputId: 'dbacidity', spanId: 'current-dbacidity' },
+                    { inputId: 'dbrich', spanId: 'current-dbrich' },
+                    { inputId: 'dbsweet', spanId: 'current-dbsweet' },
+                    { inputId: 'dbsmell', spanId: 'current-dbsmell' },
+                ];
                 
-                    sliders.forEach((slider) => {
-                        const inputElement = document.getElementById(slider.inputId);
-                        const spanElement = document.getElementById(slider.spanId);
+                sliders.forEach((slider) => {
+                    const inputElement = document.getElementById(slider.inputId);
+                    const spanElement = document.getElementById(slider.spanId);
                 
-                        const setCurrentValue = (val) => {
-                            spanElement.innerText = val;
-                        };
+                    const setCurrentValue = (val) => {
+                        spanElement.innerText = val;
+                    };
                 
-                        const rangeOnChange = (e) => {
-                            setCurrentValue(e.target.value);
-                        };
+                    const rangeOnChange = (e) => {
+                        setCurrentValue(e.target.value);
+                    };
                 
-                        inputElement.addEventListener('input', rangeOnChange);
-                        setCurrentValue(inputElement.value);
-                    });
-                }
+                    inputElement.addEventListener('input', rangeOnChange);
+                    setCurrentValue(inputElement.value);
+                });
+            }
             </script>
 </x-app-layout>

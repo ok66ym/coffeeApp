@@ -43,9 +43,9 @@ Route::middleware(['auth'])->group(function(){
 
 //いいねした投稿表示関係のルーティング
 Route::middleware(['auth'])->group(function(){
-    Route::get('/likes', [LikeController::class, 'likeIndex'])->name('likes.index');                //いいね一覧画面へ
-    Route::get('/likes/coffees', [LikeController::class, 'likeCoffeeIndex'])->name('likes.coffeeindex');                //いいねした投稿一覧
-    Route::get('/likes/posts', [LikeController::class, 'likePostIndex'])->name('likes.postindex');                //いいねしたデータベース上のデータ一覧
+    Route::get('/likes', [LikeController::class, 'likeIndex'])->name('likes.index');                                //いいね一覧画面へ
+    Route::get('/likes/coffees', [LikeController::class, 'likeCoffeeIndex'])->name('likes.coffeeindex');            //いいねした投稿一覧
+    Route::get('/likes/posts', [LikeController::class, 'likePostIndex'])->name('likes.postindex');                  //いいねしたデータベース上のデータ一覧
     //いいねしたデータベース上のコーヒー詳細表示
     Route::get('/likes/coffee/{coffee}', [LikeController::class, 'likeshowCoffee'])->name('likes.likeshowCoffee');
     //いいねした投稿詳細表示
