@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-20 pb-40">
             <!--投稿編集ページへ-->
             <div class="edit">
                 <a href="/posts/{{ $post->id }}/edit">編集</a>

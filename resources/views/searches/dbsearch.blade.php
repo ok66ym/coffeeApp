@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-20 pb-40">
             <form action="/search/db/results" method="GET">
                 
                 <div class="dbsearch_bitter">

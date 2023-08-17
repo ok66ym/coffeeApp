@@ -1,5 +1,5 @@
     <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-20 pb-40">
             <!--投稿結果を表示-->
             <h1>検索履歴一覧</h1>
             
