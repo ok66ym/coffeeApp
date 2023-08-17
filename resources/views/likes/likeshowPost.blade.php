@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-5">
             <!--投稿情報-->
             <!--画像表示-->
             @if($post->image)

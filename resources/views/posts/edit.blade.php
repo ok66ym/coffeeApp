@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-20 pb-40">
             <h1>投稿編集</h1>
             <div class="posts">
                 <form action='/posts/{{ $post->id }}' method="POST">

@@ -1,5 +1,5 @@
 <x-app-layout>
-        <div class="pl-64">
+        <div class="pt-20 pb-40">
             <!--データベースの中からコーヒーを探すページへ-->
             <div class="database_search">
                 <a href="/search/db">データベースからコーヒーを探す</a>

@@ -1,0 +1,90 @@
+nav.fixed.bottom-0 div.flex {
+    align-items: center;
+}
+
+/* Autofill スタイルのカスタマイズ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  background-color: #ffecd4 !important;
+  color: inherit !important;
+  box-shadow: 0 0 0px 1000px #ffecd4 inset !important;
+}
+
+/* 全体の薄い茶色の背景色 */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: #d2a679; 
+}
+
+/* 濃い茶色のスライダーバーの色 */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background-color: #d2a679;
+}
+
+input[type="range"]::-moz-range-track {
+    height: 2px;
+    background-color: #d2a679;
+}
+
+/* 濃い茶色の部分 */
+input[type="range"]::-webkit-progress-value {
+    background-color: #7f1d1d;
+}
+
+input[type="range"]::-moz-progress-bar {
+    background-color: #7f1d1d;
+}
+
+/* スライダーのノブ */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #7f1d1d;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -9px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #7f1d1d;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/*スライダーの現在の数字をデザイン*/
+/*.slider-container {*/
+/*    position: relative;*/
+/*}*/
+
+/*.slider-value {*/
+/*    position: absolute;*/
+/*    bottom: -25px;*/
+/*    transform: translateX(-50%);*/
+/*    background-color: #fff;*/
+/*    padding: 2px 5px;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/* スライダーのテキストのデザインを調整 */
+.slider-value {
+    position: absolute;
+    bottom: -10px; /* 位置を調整 */
+    transform: translateX(-5%) translateY(-20%);
+    background-color: #d97706; /* Tailwindのyellow-800の色コード */
+    color: white; /* テキストの色 */
+    padding: 2px 5px;
+    border-radius: 5px;
+    z-index: 20; /* 数字がスライダーの上に来るように */
+}
+
+/* スライダーとそのテキストの間のスペースを調整 */
+.slider-container {
+    margin-bottom: 30px; /* この値を調整して、適切なスペースを確保 */
+}
