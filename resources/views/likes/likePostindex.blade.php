@@ -47,8 +47,10 @@
                     </div>
                 @endforeach
             </div>
-            <div class="likepost_pagination">
-                {{ $likesPosts->links() }}
+            
+            <div class='paginate'>
+                {{ $likesPosts->links('paginator.custom') }}
             </div>
+             
     </div>
 </x-app-layout>

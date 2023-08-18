@@ -50,7 +50,9 @@
         
         <!--ページネーション実装．投稿内容の10分を表示-->
         <div class='paginate'>
-            {{$posts->links()}}
+            {{ $posts->links('paginator.custom') }}
         </div>
-    </div>
+    
+    <script>
+    </script>
 </x-app-layout>

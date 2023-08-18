@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
     
     //ぺジネーションについての関数
-    public function getOwnPaginateByLimit(int $limit_count = 5){
+    public function getOwnPaginateByLimit(int $limit_count = 9){
         return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     //coffeepostsテーブルとのリレーション

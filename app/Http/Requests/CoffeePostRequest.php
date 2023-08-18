@@ -28,7 +28,7 @@ class CoffeePostRequest extends FormRequest
             'post.species_name' => 'nullable|string|max:100',
             'post.area_name' => 'nullable|string|max:100',
             'post.shop_name' => 'required|string|max:100',
-            'post.shop_url' => 'url',
+            'post.shop_url' => 'nullable|url',
             'post.bitter' => 'required|numeric|max:5|min:0',
             'post.acidity' => 'required|numeric|max:5|min:0',
             'post.rich' => 'required|numeric|max:5|min:0',

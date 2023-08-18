@@ -31,8 +31,8 @@
                     
                 @endforeach
                 
-                <div class="searchstore_pagination">
-                    {{ $searchstores->links() }}
+                <div class='paginate'>
+                    {{ $searchstores->links('paginator.custom') }}
                 </div>
         </div>
                 

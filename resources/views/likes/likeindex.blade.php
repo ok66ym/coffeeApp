@@ -10,7 +10,7 @@
         <div class="border border-black p-50 m-15 flex justify-center space-x-4 p-2">
             <!--投稿一覧へ-->
             <!--<a class="p-50 text-orange-500 font-bold hover:text-orange-700 transition duration-300 no-underline" href="/">投稿</a>-->
-            <a href="/likes/coffees" class="text-1xl bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-4 px-6 rounded cursor-pointer no-underline">データベース上のデータ</a>
+            <a href="/likes/coffees" class="text-1xl bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-4 px-6 rounded cursor-pointer no-underline">コーヒー</a>
             <!--いいね一覧へ-->
             <!--<a class="p-50 text-orange-500 font-bold hover:text-orange-700 transition duration-300 no-underline" href="/likes">いいね</a>-->
             <a href="/likes/posts" class="text-1xl bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-4 px-6 rounded cursor-pointer no-underline">みんなの投稿</a>
