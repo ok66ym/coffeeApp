@@ -29,7 +29,7 @@ class Coffee extends Model
     
     
     //ぺジネーションについての関数
-    public function getPaginateBylimit($user_id, int $limit_count = 10) {
+    public function getPaginateBylimit($user_id, int $limit_count = 9) {
         return $this::with('user')->where('user_id', $user_id)->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     

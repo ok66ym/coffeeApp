@@ -25,18 +25,18 @@
             @foreach ($likesCoffees as $coffee)
                 <div class="p-15 border border-black w-1/3 flex flex-col justify-center">
                     <!--画像表示-->
-                    @if($coffee->coffee->image)
-                    <div class='p-5 flex-grow flex justify-center items-center'>
-                        <img src="{{ $coffee->coffee->image }}" alt="画像が読み込めません。"/>
-                    </div>
-                    @else
-                    <div class="p-5 flex-grow flex justify-center items-center">
-                       <p>No Image</p>
-                    </div>
-                    @endif
+                    <!--@if($coffee->coffee->image)-->
+                    <!--<div class='p-5 flex-grow flex justify-center items-center'>-->
+                    <!--    <img src="{{ $coffee->coffee->image }}" alt="画像が読み込めません。"/>-->
+                    <!--</div>-->
+                    <!--@else-->
+                    <!--<div class="p-5 flex-grow flex justify-center items-center">-->
+                    <!--   <p>No Image</p>-->
+                    <!--</div>-->
+                    <!--@endif-->
                         
                     <!--コーヒー名表示-->
-                    <h2 class='flex justify-center mb-5'>
+                    <h2 class='flex justify-center mt-5 mb-5'>
                         <a class="p-50 text-orange-500 font-bold hover:text-orange-700 transition duration-300 no-underline" href={{ route('likes.likeshowCoffee', ['coffee' => $coffee->coffee_id]) }}>{{ $coffee->coffee->name }}</a>
                     </h2>
                         
@@ -47,8 +47,10 @@
                 </div>
             @endforeach
         </div>
-        <div class="likepost_pagination">
-            {{ $likesCoffees->links() }}
+        
+        <div class='paginate'>
+            {{ $likesCoffees->links('paginator.custom') }}
         </div>
+        
     </div>
 </x-app-layout>

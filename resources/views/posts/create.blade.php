@@ -3,11 +3,11 @@
                     
             <div class="flex flex-col justify-center items-center min-h-screen bg-orange-100">
                     
-                <div class="flex flex-col justify-center items-center border border-orange-900 rounded p-8 w-4/5 md:w-1/2 lg:w-2/3">
+                <div class="flex flex-col justify-center items-center border border-orange-900 rounded p-8 w-3/5 md:w-1/2 lg:w-3/5">
                     <!--説明文のポップアップ-->
                     <!-- ポップアップボタン -->
                     <div class="flex justify-center mb-4">
-                        <button id="show-popup" class="px-4 py-2 hover:bg-yellow-800 focus:border-orange-900 focus:text-black text-black border border-orange-800 rounded cursor-pointer z-100">投稿について</button>
+                        <button id="show-popup" class="px-4 py-2 bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold border border-orange-300 rounded cursor-pointer z-100">投稿について</button>
                     </div>
                 
                     <!-- ポップアップの内容 -->
@@ -25,47 +25,48 @@
                                 
                                 <b class="text-orange-900">任意事項</b>
                                 <br>
-                                種名・産地・販売元のURL(公式サイトなど)・写真
+                                種名・産地・焙煎度・販売元のURL(公式サイトなど)・写真
                             </p>
                         </div>
                     </div>
+                    
                     <form action="/posts" method="POST" enctype="multipart/form-data">
                         @csrf
                     
                         <!--コーヒー名を記録-->
                         <div class="flex items-center mb-4">
-                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[name]" placeholder="コーヒー名" value="{{ old('post.name') }}"/>
+                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[name]" placeholder="コーヒー名" value="{{ old('post.name') }}"/>
                         </div>
                         <p class="name_error" style="color:red">{{ $errors->first('post.name') }}</p>
                         
                         <!--コーヒー種名を記録-->
                         <div class="flex items-center mb-4">
-                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[species_name]" placeholder="コーヒー種名" value="{{ old('post.specoes_name') }}"/>
+                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[species_name]" placeholder="コーヒー種名" value="{{ old('post.specoes_name') }}"/>
                         </div>
                         <p class="species_name_error" style="color:red">{{ $errors->first('post.species_name') }}</p>
                         
                         <!--コーヒーの産地を記録-->
                         <div class="flex items-center mb-4">
-                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[area_name]" placeholder="産地" value="{{ old('post.area_name') }}"/>
+                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[area_name]" placeholder="産地" value="{{ old('post.area_name') }}"/>
                         </div>
                         <p class="area_name_error" style="color:red">{{ $errors->first('post.area_name') }}</p>
                         
                         <!--販売・購入店を記録-->
                         <div class="flex items-center mb-4">
-                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[shop_name]" placeholder="販売店" value="{{ old('post.shop_name') }}"/>
+                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[shop_name]" placeholder="販売店" value="{{ old('post.shop_name') }}"/>
                         </div>
                         <p class="shop_name_error" style="color:red">{{ $errors->first('post.shop_name') }}</p>
                         
                         <!--コーヒー販売元のurlを記録-->
                         <div class="flex items-center mb-4">
-                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[shop_url]" placeholder="販売元URL https://~~~" value="{{ old('post.shop_url') }}"/>
+                            <input class ="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[shop_url]" placeholder="販売元URL https://~~~" value="{{ old('post.shop_url') }}"/>
                         </div>
                         <p class="ship_url_error" style="color:red">{{ $errors->first('post.shop_url') }}</p>
                         
                         <!--コーヒーを5つの項目で評価-->
                         <div class="flex items-center mt-8 mb-5">
                             <p class="mr-3 mb-6">苦味</p>
-                            <div class="slider-container relative w-80">
+                            <div class="slider-container relative w-96">
                                 <input type="range" id="postbitter" min="1" max="5" step="0.5" name="post[bitter]" value="{{ old('post.bitter', session('post_values.bitter', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 h-2 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-bitter"></span>
                             </div>
@@ -74,7 +75,7 @@
                         
                         <div class="flex items-center mt-7 mb-5">
                             <p class="mr-3 mb-6">酸味</p>
-                            <div class="slider-container relative w-80">
+                            <div class="slider-container relative w-96">
                                 <input type="range" id="postacidity" min="1" max="5" step="0.5" name="post[acidity]" value="{{ old('post.acidity', session('post_values.acidity', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 h-2 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-acidity"></span>
                             </div>
@@ -83,7 +84,7 @@
                             
                         <div class="flex items-center mt-7 mb-5">
                             <p class="mr-3 mb-6">コク</p>
-                            <div class="slider-container relative w-80">
+                            <div class="slider-container relative w-96">
                                 <input type="range" id="postrich" min="1" max="5" step="0.5" name="post[rich]" value="{{ old('post.rich', session('post_values.rich', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 h-2 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-rich"></span>
                             </div>
@@ -92,7 +93,7 @@
                         
                         <div class="flex items-center mt-7 mb-5">
                             <p class="mr-3 mb-6">甘味</p>
-                            <div class="slider-container relative w-80">
+                            <div class="slider-container relative w-96">
                                 <input type="range" id="postsweet" min="1" max="5" step="0.5" name="post[sweet]" value="{{ old('post.sweet', session('post_values.sweet', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 h-2 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-sweet"></span>
                             </div>
@@ -101,7 +102,7 @@
                         
                         <div class="flex items-center mt-7 mb-5">
                             <p class="mr-3 mb-6">香り</p>
-                            <div class="slider-container relative w-80">
+                            <div class="slider-container relative w-96">
                                 <input type="range" id="postsmell" min="1" max="5" step="0.5" name="post[smell]" value="{{ old('post.smell', session('post_values.smell', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 h-2 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-smell"></span>
                             </div>
@@ -110,20 +111,20 @@
                         
                         <!--コーヒー豆の焙煎度を記録-->
                         <div class="flex items-center mb-4">
-                            <input class= "shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" type="text" name="post[roasted]" placeholder="焙煎度" value="{{ old('post.roasted') }}"/>
+                            <input class= "shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96" type="text" name="post[roasted]" placeholder="焙煎度" value="{{ old('post.roasted') }}"/>
                         </div> 
                         <p class="roasted_error" style="color:red">{{ $errors->first('post.roasted') }}</p>
                         
                         <!--投稿するコーヒーについての説明-->
                         <div class="flex items-center mb-4">
-                            <textarea class="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-80" name="post[explanation]" placeholder="コーヒーについて">{{old('post.explanation')}}</textarea>
+                            <textarea class="shadow-autofill focus:ring-2 focus:ring-orange-900 focus:border-orange-900 mr-4 bg-orange-100 border-0 border-b border-orange-800 w-96 h-40" name="post[explanation]" placeholder="コーヒーについて">{{old('post.explanation')}}</textarea>
                         </div>
                         <p class="explanation_error" style="color:red">{{ $errors->first('post.explanation') }}</p>
                         
                         <!--画像投稿機能実装-->
                         <div class="flex items-center mb-4 space-x-4">
                             <div class="flex flex-col items-center space-y-4"> <!-- 縦に並べる部分をflex-colで囲む -->
-                                <label for="image-upload" class="bg-yellow-700 hover:bg-yellow-800 focus:border-orange-900 text-white font-bold py-2 px-4 border border-orange-800 rounded cursor-pointer">
+                                <label for="image-upload" class="bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-2 px-4 border border-orange-300 rounded cursor-pointer">
                                     写真を選択
                                 </label>
                                 <input id="image-upload" type="file" name="image" class="hidden">
@@ -134,7 +135,7 @@
                         
                         <div class="flex justify-end">
                             <!--投稿ボタンの実装-->
-                            <input class="bg-yellow-700 hover:bg-yellow-800 focus:border-orange-900 text-white font-bold py-2 px-4 border border-orange-800 rounded cursor-pointer" type="submit" value="投稿"/>
+                            <input class="bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-2 px-4 border border-orange-300 rounded cursor-pointer" type="submit" value="保存"/>
                         </div>
                     </form>
                 </div>
