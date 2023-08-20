@@ -62,7 +62,7 @@ class CoffeePostController extends Controller
     
     //投稿編集
     public function edit(CoffeePost $post) {
-        return view("posts.edit")->with(['post' => $post]);
+        return view("posts.edit")->with(['post' => $post, 'like' => $like]);
     }
     
     //投稿編集実行

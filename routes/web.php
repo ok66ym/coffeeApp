@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/likes/post/{post}', [LikeController::class, 'likeshowPost'])->name('likes.likeshowPost');
 });
 
-//投稿にいいねする関係のルーティング
+//検索したデータと投稿にいいねする関係のルーティング
 Route::middleware(['auth'])->group(function(){
    Route::get('/search/posts/results/like/{post}', [LikeController::class, 'likeCoffeePost'])->name('likeCoffeePost');              //投稿内容についていいねする
    Route::get('/search/posts/results/unlike/{post}', [LikeController::class, 'unlikeCoffeePost'])->name('unlikeCoffeePost');        //投稿内容いいねをはずす
@@ -65,8 +65,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/search', [SearchController::class, 'search'])->name('searches.index');                         //検索選択ページ
     Route::get('/search/db', [SearchController::class, 'dbsearch'])->name('search.dbsearch');                   //データベース検索ページ
     Route::get('/search/db/results', [SearchController::class, 'dbresult'])->name('search.dbresults');          //データベース検索結果
+    Route::get('/search/db/results/{coffee}', [SearchController::class, 'dbshow'])->name('searches.dbshow');
     Route::get('/search/posts', [SearchController::class, 'postsearch'])->name('search.postsearch');            //投稿検索ページ
     Route::get('/search/posts/results', [SearchController::class, 'postresult'])->name('search.postresults');   //投稿検索結果
+    Route::get('/search/posts/results/{post}', [SearchController::class, 'postshow'])->name('searches.postshow');
     //再検索
     Route::get('/research/db/results', [SearchController::class, 'redbresult'])->name('search.redbresults');                 //検索履歴からデータベースを再検索結果
     Route::get('/research/posts/results', [SearchController::class, 'repostresult'])->name('search.repostresults');         //検索履歴からみんなの投稿を再検索結果

@@ -36,7 +36,7 @@
                     <!--コーヒー名を表示-->
                     <div class='flex justify-center mb-5'>
                         <h2>
-                            <a class="p-50 text-orange-500 font-bold hover:text-orange-700 transition duration-300 no-underline" href="/posts/{{ $post->id }}">{{ $post->name }}</a>
+                            <a class="p-50 text-gray-700 font-bold hover:text-orange-700 transition rouded duration-300 no-underline" href="/posts/{{ $post->id }}">{{ $post->name }}</a>
                         </h2>
                     </div>
                     
