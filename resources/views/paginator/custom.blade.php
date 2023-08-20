@@ -1,8 +1,13 @@
 @if ($paginator->hasPages())
     <div class="flex justify-center items-center space-x-4 mt-2 text-lg">
+        @php
+            $searchValues = session('search_values') ?? [];
+            $queryParams = http_build_query($searchValues);
+        @endphp
+        
         <!-- Previous Page Link -->
         @if (!$paginator->onFirstPage())
-            <a href="{{ $paginator->previousPageUrl() }}" class="text-orange-700 hover:text-orange-800">←</a>
+            <a href="{{ $paginator->previousPageUrl() . '?' . $queryParams }}" class="text-orange-700 hover:text-orange-800">←</a>
         @endif
 
         <!-- Page Numbers -->
@@ -33,7 +38,7 @@
 
         <!-- Next Page Link -->
         @if ($paginator->hasMorePages())
-            <a href="{{ $paginator->nextPageUrl() }}" class="ml-4 text-orange-700 hover:text-orange-800">→</a>
+            <a href="{{ $paginator->nextPageUrl() . '?' . $queryParams }}" class="ml-4 text-orange-700 hover:text-orange-800">→</a>
         @endif
     </div>
 @endif

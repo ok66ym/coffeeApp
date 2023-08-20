@@ -13,8 +13,6 @@
                     <!-- ポップアップの内容 -->
                     <div id="popup" class="fixed top-0 left-0 bg-black bg-opacity-50 hidden flex justify-center items-center mb-5 z-100 relative">
                         <div class="bg-yellow-100 border border-orange-900 p-8 rounded max-w-xl relative">
-                            <button id="close-popup" class="absolute top-4 right-4 mt-4 px-4 py-2 border-0 focus:underline focus:text-white focus:text-black text-gray-700 rounded cursor-pointer ">×CLOSE</button>
-                            <h2 class="mb-4 font-bold">投稿について</h2>
                             <p>
                                 <b class="text-orange-900">必須事項</b>
                                 <br>
@@ -27,6 +25,9 @@
                                 <br>
                                 種名・産地・焙煎度・販売元のURL(公式サイトなど)・写真
                             </p>
+                            <div class="flex justify-center items-center">
+                                <button id="close-popup" class="flex justify-center items-center p-4 border-0 focus:underline focus:text-white focus:text-black text-gray-700 rounded cursor-pointer ">×CLOSE</button>
+                            </div>
                         </div>
                     </div>
                     

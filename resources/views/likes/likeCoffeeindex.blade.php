@@ -51,6 +51,5 @@
         <div class='paginate'>
             {{ $likesCoffees->links('paginator.custom') }}
         </div>
-        
     </div>
 </x-app-layout>
