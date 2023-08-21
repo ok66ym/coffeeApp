@@ -6,6 +6,7 @@ use App\Http\Controllers\CoffeePostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SearchStoreController;
+use App\Http\Controllers\InstructController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/histories', [SearchStoreController::class, 'indexHistory'])->name('searchestores.index');                          //検索履歴一覧表示
     Route::delete('/histories/alldelete', [SearchStoreController::class, 'allDeleteHistory'])->name('histories.alldelete');         //検索履歴を一括で削除
     Route::delete('/histories/{searchstore}', [SearchStoreController::class, 'deleteHistory']);                                     //検索履歴は物理削除を採用．検索履歴を削除
+});
+
+//検索機能保存機能関係のルーティング
+Route::middleware('auth')->group(function () {
+   Route::get('/about', [InstructController::class, 'instruction'])->name('about.instruction'); 
 });
 
 //Breeze機能の認証機能

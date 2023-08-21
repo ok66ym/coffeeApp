@@ -147,10 +147,16 @@
                                 {{ __('検索') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap">
+                        <div class="flex flex-1 justify-center items-center whitespace-nowrap border-r border-white">
                             <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-20 w-20">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
                                 {{ __('検索履歴') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="flex flex-1 justify-center items-center whitespace-nowrap">
+                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-20 w-20">
+                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
+                                {{ __('アプリについて') }}
                             </x-nav-link>
                         </div>
                     </div>
