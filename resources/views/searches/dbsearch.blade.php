@@ -30,7 +30,9 @@
                                 <b class="text-orange-900">検索のコツ</b>
                                 <br>
                                 デフォルトでは，それぞれの値は「3」となっています．
-                                好みのコーヒーを絞り込むには，重視したい項目の値を大きく，要視していない項目の値を小さく設定してみてください．
+                                好みのコーヒーを絞り込むには，重視したい項目の値を大きく，要視していない項目の値を小さく設定してみてください．<br><br>
+                                
+                                <b class="text-sx font-bold">※販売店のデータが削除された場合は，販売店のリンクから販売サイトが表示されない場合があります．
                             </p>
                             <div class="flex justify-center items-center">
                                 <button id="close-popup" class="flex justify-center items-center p-4 border-0 focus:underline focus:text-white focus:text-black text-gray-700 rounded cursor-pointer ">×CLOSE</button>

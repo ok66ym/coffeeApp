@@ -102,7 +102,7 @@
                 </div>
                 
                 <div class="flex justify-center items-center mt-5">
-                    <a href='/search/post' class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer no-underline">
+                    <a href='/search/posts' class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer no-underline">
                         検索に戻る
                     </a>
                 </div>
