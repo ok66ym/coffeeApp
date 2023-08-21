@@ -80,35 +80,59 @@ class SearchController extends Controller
         // 5段階評価で完全に一致している(100%)の場合：5，90％以上100未満：4.5，80％以上90未満：4，70％以上80未満：3.5
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
             
-            // $dbsearch = $dbsearches->map(function ($dbsearch) use ($dbsearchInfo) {
-            //     $input_sum = $dbsearchInfo['bitter'] + $dbsearchInfo['acidity'] + $dbsearchInfo['rich'] + $dbsearchInfo['sweet'] + $dbsearchInfo['smell'];
-            //     $post_sum = $dbsearch->bitter + $dbsearch->acidity + $dbsearch->rich + $dbsearch->sweet + $dbsearch->smell;
-            //     $match_percentage = ($input_sum / $post_sum) * 100;
-                
-            //     if ($match_percentage >= 100) {
-            //         $dbsearch->rating = 5;
-            //     } elseif ($match_percentage >= 90) {
-            //         $dbsearch->rating = 4.5;
-            //     } elseif ($match_percentage >= 80) {
-            //         $dbsearch->rating = 4;
-            //     } elseif ($match_percentage >= 70) {
-            //         $dbsearch->rating = 3.5;
-            //     } elseif ($match_percentage >= 50) {
-            //         $dbsearch->rating = 3;
-            //     } elseif ($match_percentage >= 40) {
-            //         $dbsearch->rating = 2.5;
-            //     } elseif ($match_percentage >= 30) {
-            //         $dbsearch->rating = 2;
-            //     } elseif ($match_percentage >= 20) {
-            //         $dbsearch->rating = 1.5;
-            //     } elseif ($match_percentage >= 10) {
-            //         $dbsearch->rating = 1;
-            //     } else {
-            //         $dbsearch->rating = 0;
-            //     }
-                
-            //     return $dbsearch;
-            // });
+        $dbsearches = $dbsearches->map(function ($dbsearch) use ($dbsearchInfo) {
+            $input_sum = $dbsearchInfo['bitter'] + $dbsearchInfo['acidity'] + $dbsearchInfo['rich'] + $dbsearchInfo['sweet'] + $dbsearchInfo['smell'];
+            $db_sum = $dbsearch->bitter + $dbsearch->acidity + $dbsearch->rich + $dbsearch->sweet + $dbsearch->smell;
+            $match_percentage = ($input_sum / $db_sum) * 100;
+    
+            $dbsearch->match_percentage = $match_percentage;
+            
+            if ($match_percentage == 100) {
+                $dbsearch->rating = 5;
+            } elseif ($match_percentage >= 90 && $match_percentage < 100) {
+                $dbsearch->rating = 4.5;
+            } elseif ($match_percentage >= 80 && $match_percentage < 90) {
+                $dbsearch->rating = 4;
+            } elseif ($match_percentage >= 70 && $match_percentage < 80) {
+                $dbsearch->rating = 3.5;
+            } elseif ($match_percentage >= 60 && $match_percentage < 70) {
+                $dbsearch->rating = 3;
+            } elseif ($match_percentage >= 50 && $match_percentage < 60) {
+                $dbsearch->rating = 2.5;
+            } elseif ($match_percentage >= 40 && $match_percentage < 50) {
+                $dbsearch->rating = 2;
+            } elseif ($match_percentage >= 30 && $match_percentage < 40) {
+                $dbsearch->rating = 1.5;
+            } elseif ($match_percentage >= 20 && $match_percentage < 30) {
+                $dbsearch->rating = 1;
+            } elseif ($match_percentage >= 10 && $match_percentage < 20) {
+                $dbsearch->rating = 0.5;
+            } elseif ($match_percentage < 10) {
+                $dbsearch->rating = 0;
+            } elseif ($match_percentage > 100 && $match_percentage <= 110) {
+                $dbsearch->rating = 4.5;
+            } elseif ($match_percentage > 110 && $match_percentage <= 120) {
+                $dbsearch->rating = 4;
+            } elseif ($match_percentage > 120 && $match_percentage <= 130) {
+                $dbsearch->rating = 3.5;
+            } elseif ($match_percentage > 130 && $match_percentage <= 140) {
+                $dbsearch->rating = 3;
+            } elseif ($match_percentage > 140 && $match_percentage <= 150) {
+                $dbsearch->rating = 2.5;
+            } elseif ($match_percentage > 150 && $match_percentage <= 160) {
+                $dbsearch->rating = 2;
+            } elseif ($match_percentage > 160 && $match_percentage <= 170) {
+                $dbsearch->rating = 1.5;
+            } elseif ($match_percentage > 170 && $match_percentage <= 180) {
+                $dbsearch->rating = 1;
+            } elseif ($match_percentage > 180 && $match_percentage <= 190) {
+                $dbsearch->rating = 0.5;
+            } else {
+                $dbsearch->rating = 0;
+            }
+            
+            return $dbsearch;
+        });
             
         //検索値をセッションに保存
         //検索数値を検索後も保持
@@ -195,38 +219,59 @@ class SearchController extends Controller
         // 5段階評価で完全に一致している(100%)の場合：5，90％以上100未満：4.5，80％以上90未満：4，70％以上80未満：3.5
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
         
-        // $postsearches = $postsearches->map(function ($postsearch) use ($postsearchInfo) {
-        //     $input_sum = $postsearchInfo['bitter'] + $postsearchInfo['acidity'] + $postsearchInfo['rich'] + $postsearchInfo['sweet'] + $postsearchInfo['smell'];
-        //     $post_sum = $postsearch->bitter + $postsearch->acidity + $postsearch->rich + $postsearch->sweet + $postsearch->smell;
-        //     $match_percentage = ($input_sum / $post_sum) * 100;
+        $postsearches = $postsearches->map(function ($postsearch) use ($postsearchInfo) {
+            $input_sum = $postsearchInfo['bitter'] + $postsearchInfo['acidity'] + $postsearchInfo['rich'] + $postsearchInfo['sweet'] + $postsearchInfo['smell'];
+            $post_sum = $postsearch->bitter + $postsearch->acidity + $postsearch->rich + $postsearch->sweet + $postsearch->smell;
+            $match_percentage = ($input_sum / $post_sum) * 100;
     
-        //     $postsearch->match_percentage = $match_percentage;
+            $postsearch->match_percentage = $match_percentage;
             
-        //     if ($match_percentage >= 100) {
-        //         $postsearch->rating = 5;
-        //     } elseif ($match_percentage >= 90) {
-        //         $postsearch->rating = 4.5;
-        //     } elseif ($match_percentage >= 80) {
-        //         $postsearch->rating = 4;
-        //     } elseif ($match_percentage >= 70) {
-        //         $postsearch->rating = 3.5;
-        //     } elseif ($match_percentage >= 50) {
-        //         $postsearch->rating = 3;
-        //     } elseif ($match_percentage >= 40) {
-        //         $postsearch->rating = 2.5;
-        //     } elseif ($match_percentage >= 30) {
-        //         $postsearch->rating = 2;
-        //     } elseif ($match_percentage >= 20) {
-        //         $postsearch->rating = 1.5;
-        //     } elseif ($match_percentage >= 10) {
-        //         $postsearch->rating = 1;
-        //     } else {
-        //         $postsearch->rating = 0;
-        //     }
+            if ($match_percentage == 100) {
+                $postsearch->rating = 5;
+            } elseif ($match_percentage >= 90 && $match_percentage < 100) {
+                $postsearch->rating = 4.5;
+            } elseif ($match_percentage >= 80 && $match_percentage < 90) {
+                $postsearch->rating = 4;
+            } elseif ($match_percentage >= 70 && $match_percentage < 80) {
+                $postsearch->rating = 3.5;
+            } elseif ($match_percentage >= 60 && $match_percentage < 70) {
+                $postsearch->rating = 3;
+            } elseif ($match_percentage >= 50 && $match_percentage < 60) {
+                $postsearch->rating = 2.5;
+            } elseif ($match_percentage >= 40 && $match_percentage < 50) {
+                $postsearch->rating = 2;
+            } elseif ($match_percentage >= 30 && $match_percentage < 40) {
+                $postsearch->rating = 1.5;
+            } elseif ($match_percentage >= 20 && $match_percentage < 30) {
+                $postsearch->rating = 1;
+            } elseif ($match_percentage >= 10 && $match_percentage < 20) {
+                $postsearch->rating = 0.5;
+            } elseif ($match_percentage < 10) {
+                $postsearch->rating = 0;
+            } elseif ($match_percentage > 100 && $match_percentage <= 110) {
+                $postsearch->rating = 4.5;
+            } elseif ($match_percentage > 110 && $match_percentage <= 120) {
+                $postsearch->rating = 4;
+            } elseif ($match_percentage > 120 && $match_percentage <= 130) {
+                $postsearch->rating = 3.5;
+            } elseif ($match_percentage > 130 && $match_percentage <= 140) {
+                $postsearch->rating = 3;
+            } elseif ($match_percentage > 140 && $match_percentage <= 150) {
+                $postsearch->rating = 2.5;
+            } elseif ($match_percentage > 150 && $match_percentage <= 160) {
+                $postsearch->rating = 2;
+            } elseif ($match_percentage > 160 && $match_percentage <= 170) {
+                $postsearch->rating = 1.5;
+            } elseif ($match_percentage > 170 && $match_percentage <= 180) {
+                $postsearch->rating = 1;
+            } elseif ($match_percentage > 180 && $match_percentage <= 190) {
+                $postsearch->rating = 0.5;
+            } else {
+                $postsearch->rating = 0;
+            }
             
-        //     return $postsearch;
-            
-        // });
+            return $postsearch;
+        });
         
         //検索値をセッションに保存
         $request->session()->put('search_values', $request->input('post'));
@@ -299,35 +344,59 @@ class SearchController extends Controller
         // 5段階評価で完全に一致している(100%)の場合：5，90％以上100未満：4.5，80％以上90未満：4，70％以上80未満：3.5
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
             
-            // $redbsearch = $redbsearches->map(function ($redbsearch) use ($redbsearchInfo) {
-            //     $reinput_sum = $redbsearchInfo['bitter'] + $redbsearchInfo['acidity'] + $redbsearchInfo['rich'] + $redbsearchInfo['sweet'] + $redbsearchInfo['smell'];
-            //     $repost_sum = $redbsearch->bitter + $redbsearch->acidity + $redbsearch->rich + $redbsearch->sweet + $redbsearch->smell;
-            //     $match_percentage = ($reinput_sum / $repost_sum) * 100;
-                
-            //     if ($match_percentage >= 100) {
-            //         $redbsearch->rating = 5;
-            //     } elseif ($match_percentage >= 90) {
-            //         $redbsearch->rating = 4.5;
-            //     } elseif ($match_percentage >= 80) {
-            //         $redbsearch->rating = 4;
-            //     } elseif ($match_percentage >= 70) {
-            //         $redbsearch->rating = 3.5;
-            //     } elseif ($match_percentage >= 50) {
-            //         $redbsearch->rating = 3;
-            //     } elseif ($match_percentage >= 40) {
-            //         $redbsearch->rating = 2.5;
-            //     } elseif ($match_percentage >= 30) {
-            //         $redbsearch->rating = 2;
-            //     } elseif ($match_percentage >= 20) {
-            //         $redbsearch->rating = 1.5;
-            //     } elseif ($match_percentage >= 10) {
-            //         $redbsearch->rating = 1;
-            //     } else {
-            //         $redbsearch->rating = 0;
-            //     }
-                
-            //     return $redbsearch;
-            // });
+        $redbsearches = $redbsearches->map(function ($redbsearch) use ($redbsearchInfo) {
+            $input_sum = $redbsearchInfo['bitter'] + $redbsearchInfo['acidity'] + $redbsearchInfo['rich'] + $redbsearchInfo['sweet'] + $redbsearchInfo['smell'];
+            $redb_sum = $redbsearch->bitter + $redbsearch->acidity + $redbsearch->rich + $redbsearch->sweet + $redbsearch->smell;
+            $match_percentage = ($input_sum / $redb_sum) * 100;
+    
+            $redbsearch->match_percentage = $match_percentage;
+            
+            if ($match_percentage == 100) {
+                $redbsearch->rating = 5;
+            } elseif ($match_percentage >= 90 && $match_percentage < 100) {
+                $redbsearch->rating = 4.5;
+            } elseif ($match_percentage >= 80 && $match_percentage < 90) {
+                $redbsearch->rating = 4;
+            } elseif ($match_percentage >= 70 && $match_percentage < 80) {
+                $redbsearch->rating = 3.5;
+            } elseif ($match_percentage >= 60 && $match_percentage < 70) {
+                $redbsearch->rating = 3;
+            } elseif ($match_percentage >= 50 && $match_percentage < 60) {
+                $redbsearch->rating = 2.5;
+            } elseif ($match_percentage >= 40 && $match_percentage < 50) {
+                $redbsearch->rating = 2;
+            } elseif ($match_percentage >= 30 && $match_percentage < 40) {
+                $redbsearch->rating = 1.5;
+            } elseif ($match_percentage >= 20 && $match_percentage < 30) {
+                $redbsearch->rating = 1;
+            } elseif ($match_percentage >= 10 && $match_percentage < 20) {
+                $redbsearch->rating = 0.5;
+            } elseif ($match_percentage < 10) {
+                $redbsearch->rating = 0;
+            } elseif ($match_percentage > 100 && $match_percentage <= 110) {
+                $redbsearch->rating = 4.5;
+            } elseif ($match_percentage > 110 && $match_percentage <= 120) {
+                $redbsearch->rating = 4;
+            } elseif ($match_percentage > 120 && $match_percentage <= 130) {
+                $redbsearch->rating = 3.5;
+            } elseif ($match_percentage > 130 && $match_percentage <= 140) {
+                $redbsearch->rating = 3;
+            } elseif ($match_percentage > 140 && $match_percentage <= 150) {
+                $redbsearch->rating = 2.5;
+            } elseif ($match_percentage > 150 && $match_percentage <= 160) {
+                $redbsearch->rating = 2;
+            } elseif ($match_percentage > 160 && $match_percentage <= 170) {
+                $redbsearch->rating = 1.5;
+            } elseif ($match_percentage > 170 && $match_percentage <= 180) {
+                $redbsearch->rating = 1;
+            } elseif ($match_percentage > 180 && $match_percentage <= 190) {
+                $redbsearch->rating = 0.5;
+            } else {
+                $redbsearch->rating = 0;
+            }
+            
+            return $redbsearch;
+        });
             
         //検索値をセッションに保存
         //検索数値を検索後も保持
@@ -397,38 +466,59 @@ class SearchController extends Controller
         // 5段階評価で完全に一致している(100%)の場合：5，90％以上100未満：4.5，80％以上90未満：4，70％以上80未満：3.5
         // 50％以上70未満：3，40％以上50未満：2.5，30％以上40未満：2，20％以上30未満：1.5，10％以上20未満：1，10％より小さい：0
         
-        // $repostsearches = $repostsearches->map(function ($repostsearch) use ($repostsearchInfo) {
-        //     $reinput_sum = $repostsearchInfo['bitter'] + $repostsearchInfo['acidity'] + $repostsearchInfo['rich'] + $repostsearchInfo['sweet'] + $repostsearchInfo['smell'];
-        //     $repost_sum = $repostsearch->bitter + $repostsearch->acidity + $repostsearch->rich + $repostsearch->sweet + $repostsearch->smell;
-        //     $match_percentage = ($reinput_sum / $repost_sum) * 100;
+        $repostsearches = $repostsearches->map(function ($repostsearch) use ($repostsearchInfo) {
+            $input_sum = $repostsearchInfo['bitter'] + $repostsearchInfo['acidity'] + $repostsearchInfo['rich'] + $repostsearchInfo['sweet'] + $repostsearchInfo['smell'];
+            $repost_sum = $repostsearch->bitter + $repostsearch->acidity + $repostsearch->rich + $repostsearch->sweet + $repostsearch->smell;
+            $match_percentage = ($input_sum / $repost_sum) * 100;
     
-        //     $repostsearch->match_percentage = $match_percentage;
+            $repostsearch->match_percentage = $match_percentage;
             
-        //     if ($match_percentage >= 100) {
-        //         $repostsearch->rating = 5;
-        //     } elseif ($match_percentage >= 90) {
-        //         $repostsearch->rating = 4.5;
-        //     } elseif ($match_percentage >= 80) {
-        //         $repostsearch->rating = 4;
-        //     } elseif ($match_percentage >= 70) {
-        //         $repostsearch->rating = 3.5;
-        //     } elseif ($match_percentage >= 50) {
-        //         $repostsearch->rating = 3;
-        //     } elseif ($match_percentage >= 40) {
-        //         $repostsearch->rating = 2.5;
-        //     } elseif ($match_percentage >= 30) {
-        //         $repostsearch->rating = 2;
-        //     } elseif ($match_percentage >= 20) {
-        //         $repostsearch->rating = 1.5;
-        //     } elseif ($match_percentage >= 10) {
-        //         $repostsearch->rating = 1;
-        //     } else {
-        //         $repostsearch->rating = 0;
-        //     }
+            if ($match_percentage == 100) {
+                $repostsearch->rating = 5;
+            } elseif ($match_percentage >= 90 && $match_percentage < 100) {
+                $repostsearch->rating = 4.5;
+            } elseif ($match_percentage >= 80 && $match_percentage < 90) {
+                $repostsearch->rating = 4;
+            } elseif ($match_percentage >= 70 && $match_percentage < 80) {
+                $repostsearch->rating = 3.5;
+            } elseif ($match_percentage >= 60 && $match_percentage < 70) {
+                $repostsearch->rating = 3;
+            } elseif ($match_percentage >= 50 && $match_percentage < 60) {
+                $repostsearch->rating = 2.5;
+            } elseif ($match_percentage >= 40 && $match_percentage < 50) {
+                $repostsearch->rating = 2;
+            } elseif ($match_percentage >= 30 && $match_percentage < 40) {
+                $repostsearch->rating = 1.5;
+            } elseif ($match_percentage >= 20 && $match_percentage < 30) {
+                $repostsearch->rating = 1;
+            } elseif ($match_percentage >= 10 && $match_percentage < 20) {
+                $repostsearch->rating = 0.5;
+            } elseif ($match_percentage < 10) {
+                $repostsearch->rating = 0;
+            } elseif ($match_percentage > 100 && $match_percentage <= 110) {
+                $repostsearch->rating = 4.5;
+            } elseif ($match_percentage > 110 && $match_percentage <= 120) {
+                $repostsearch->rating = 4;
+            } elseif ($match_percentage > 120 && $match_percentage <= 130) {
+                $repostsearch->rating = 3.5;
+            } elseif ($match_percentage > 130 && $match_percentage <= 140) {
+                $repostsearch->rating = 3;
+            } elseif ($match_percentage > 140 && $match_percentage <= 150) {
+                $repostsearch->rating = 2.5;
+            } elseif ($match_percentage > 150 && $match_percentage <= 160) {
+                $repostsearch->rating = 2;
+            } elseif ($match_percentage > 160 && $match_percentage <= 170) {
+                $repostsearch->rating = 1.5;
+            } elseif ($match_percentage > 170 && $match_percentage <= 180) {
+                $repostsearch->rating = 1;
+            } elseif ($match_percentage > 180 && $match_percentage <= 190) {
+                $repostsearch->rating = 0.5;
+            } else {
+                $repostsearch->rating = 0;
+            }
             
-        //     return $repostsearch;
-            
-        // });
+            return $repostsearch;
+        });
         
         //検索値をセッションに保存
         // $request->session()->put('search_values', $request->input('post'));
