@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CoffeePost;                  //CoffeePostモデル使用のためのuse宣言
 use App\Http\Requests\CoffeePostRequest;
-use App\Models\LikeCoffeePost;                        //Likeモデル使用のための宣言
+use App\Models\LikeCoffeePost;
 use App\Models\LikeCoffee;
 use Illuminate\Support\Facades\Auth;
 use Cloudinary;                             //画像投稿機能のための宣言．Cloudinaryを使用する

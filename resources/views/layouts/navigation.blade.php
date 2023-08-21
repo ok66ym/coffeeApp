@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
                         {{ __('検索履歴') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
+                        {{ __('アプリについて') }}
+                    </x-nav-link>
                 </div>
             </div>
 
