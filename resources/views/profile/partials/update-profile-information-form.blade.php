@@ -5,7 +5,7 @@
             </h2>
     
             <p class="mt-1 text-sm text-gray-600">
-                {{ __("名前とメールアドレスのアカウント情報を更新できます．") }}
+                {{ __("アカウント情報を更新できます．") }}
             </p>
         </header>
     
@@ -21,6 +21,12 @@
                 <x-input-label for="name" :value="__('ユーザー名')" />
                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            </div>
+            
+            <div>
+                <x-input-label for="myinfo" :value="__('自己紹介')" />
+                <x-text-input id="myinfo" name="myinfo" type="text" class="mt-1 block w-full" :value="old('myinfo', $user->myinfo)" required autofocus autocomplete="myinfo" />
+                <x-input-error class="mt-2" :messages="$errors->get('myinfo')" />
             </div>
     
             <div>
@@ -57,7 +63,7 @@
                         x-transition
                         x-init="setTimeout(() => show = false, 2000)"
                         class="text-sm text-gray-600"
-                    >{{ __('保存') }}</p>
+                    >{{ __('プロフィールが更新されました') }}</p>
                 @endif
             </div>
         </form>
