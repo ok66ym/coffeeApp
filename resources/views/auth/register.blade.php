@@ -4,7 +4,7 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('名前')" />
+            <x-input-label for="name" :value="__('ユーザー名')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -14,6 +14,13 @@
             <x-input-label for="email" :value="__('メールアドレス(ログインID)')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+        
+        <!-- my information -->
+        <div class="mt-4">
+            <x-input-label for="myinfo" :value="__('自己紹介')" />
+            <x-text-input id="profile" class="block mt-1 w-full" type="text" name="myinfo" :value="old('myinfo')" required autocomplete="myinfo" />
+            <x-input-error :messages="$errors->get('myinfo')" class="mt-2" />
         </div>
 
         <!-- Password -->
