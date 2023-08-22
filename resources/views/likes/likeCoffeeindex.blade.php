@@ -1,14 +1,16 @@
 <x-app-layout>
     <div class="mt-20 mb-40">
-                <!--認証済みのuser表示-->
-        <p class="text-3xl font-bold p-5">ユーザー：{{ Auth::user() -> name }} </p>
-        
-        <div class="text-2xl p-10">
-            <p>いいね数：{{ $likesCoffees->count() }}</p>
-        </div>
-        
-        <div class="text-2xl p-5">
-            <p>プロフィール</p>
+        <div class="flex flex-col justify-center items-center">
+                    <!--認証済みのuser表示-->
+            <p class="text-3xl text-gray-900 p-5">{{ Auth::user() -> name }} </p>
+            
+            <div class="text-2xl p-5">
+                <p>いいね数：<span class="text-orange-700">{{ $likesCoffees->count() }}</span></p>
+            </div>
+            
+            <div class="text-2xl text-gray-900 p-2">
+                {{ Auth::user() -> myinfo }}
+            </div>
         </div>
         
         <div class="border border-black p-50 m-15 flex justify-center space-x-4 p-2">
