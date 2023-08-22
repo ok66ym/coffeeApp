@@ -31,11 +31,11 @@
                     </div>
                     
                     <!-- Logo -->
-                    <div class="flex-shrink-0">
-                        <a href="{{ route('index') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
-                    </div>
+                    <!--<div class="flex-shrink-0">-->
+                    <!--    <a href="{{ route('index') }}">-->
+                    <!--        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
+                    <!--    </a>-->
+                    <!--</div>-->
                     
                     <!-- Settings Dropdown -->
                     <div class="flex items-center">
