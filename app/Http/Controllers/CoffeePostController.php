@@ -62,6 +62,7 @@ class CoffeePostController extends Controller
     
     //投稿編集
     public function edit(CoffeePost $post) {
+        $like = auth()->user()->likesCoffeePosts()->where('id', $post->id)->first();
         return view("posts.edit")->with(['post' => $post, 'like' => $like]);
     }
     
