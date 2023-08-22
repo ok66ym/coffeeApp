@@ -7,8 +7,8 @@
             <p>いいね数：{{ $likesCoffees->count() }}</p>
         </div>
         
-        <div class="text-2xl p-10">
-            <p>一言</p>
+        <div class="text-2xl p-5">
+            <p>プロフィール</p>
         </div>
         
         <div class="border border-black p-50 m-15 flex justify-center space-x-4 p-2">
