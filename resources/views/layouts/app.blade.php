@@ -19,6 +19,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <!-- Alpine.js -->
+        <!--<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>-->
     </head>
     <body class="font-sans antialiased bg-orange-100">
         <div class="flex flex-col bg-orange-100">
@@ -70,53 +73,9 @@
                             </x-slot>
                         </x-dropdown>
                     </div>
-                    
-                    <!-- Hamburger -->
-                    <div class="-mr-2 flex items-center sm:hidden">
-                        <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white bg-yellow-700 hover:bg-yellow-800 focus:outline-none focus:bg-gray-100 focus:text-black transition duration-150 ease-in-out">
-                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
-
-            <!-- Responsive Navigation Menu -->
-            <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-                <div class="pt-2 pb-3 space-y-1">
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-responsive-nav-link>
-                </div>
-        
-                <!-- Responsive Settings Options -->
-                <div class="pt-4 pb-1 border-t border-gray-200">
-                    <div class="px-4">
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                    </div>
-        
-                    <div class="mt-3 space-y-1">
-                        <x-responsive-nav-link :href="route('profile.edit')">
-                            {{ __('プロフィール') }}
-                        </x-responsive-nav-link>
-        
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-        
-                            <x-responsive-nav-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('ログアウト') }}
-                            </x-responsive-nav-link>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
             <!-- Page Content -->
             <main class="flex-grow">
@@ -129,32 +88,32 @@
                     <!-- Navigation Links - for larger screens -->
                     <div class="flex py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <!-- Using flex-1 to divide the space equally and justify-center and items-center to center the content. -->
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap border-r border-white">
-                            <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="h-20 w-20">
+                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('index')" :active="request()->routeIs('index')">
                                 {{ __('ホーム') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap border-r border-white">
-                            <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="h-20 w-20">
+                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('create')" :active="request()->routeIs('create')">
                                 {{ __('投稿') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap border-r border-white">
-                            <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="h-20 w-20">
+                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('searches.index')" :active="request()->routeIs('searches.index')">
                                 {{ __('検索') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap border-r border-white">
-                            <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-20 w-20">
+                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
                                 {{ __('検索履歴') }}
                             </x-nav-link>
                         </div>
                         <div class="flex flex-1 justify-center items-center whitespace-nowrap">
-                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-20 w-20">
+                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
                             <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
                                 {{ __('アプリについて') }}
                             </x-nav-link>
