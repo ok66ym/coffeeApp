@@ -24,7 +24,7 @@
         <!--<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>-->
     </head>
     <body class="font-sans antialiased bg-orange-100">
-        <div class="flex flex-col bg-orange-100">
+        <div class="flex flex-1 bg-orange-100">
             
             <!--Header-->
             <div class="bg-yellow-700 fixed top-0 inset-x-0 z-50 shadow-lg">
@@ -81,41 +81,40 @@
             <main class="flex-grow">
                 {{ $slot }}
             </main>
-            
             <!--footer-->
                 <div class="bg-yellow-700 fixed bottom-0 inset-x-0 z-10">
             <!-- Navigation Links - for larger screens -->
                     <!-- Navigation Links - for larger screens -->
-                    <div class="flex py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-center py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <!-- Using flex-1 to divide the space equally and justify-center and items-center to center the content. -->
-                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
-                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('index')" :active="request()->routeIs('index')">
+                        <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="h-8 w-8 sm:h-10 sm:w-10">
+                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('index')" :active="request()->routeIs('index')">
                                 {{ __('ホーム') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
-                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('create')" :active="request()->routeIs('create')">
+                        <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="h-8 w-8 sm:h-10 sm:w-10">
+                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('create')" :active="request()->routeIs('create')">
                                 {{ __('投稿') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
-                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('searches.index')" :active="request()->routeIs('searches.index')">
-                                {{ __('検索') }}
+                        <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="h-8 w-8 sm:h-10 sm:w-10">
+                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searches.index')" :active="request()->routeIs('searches.index')">
+                                {{ __('探す') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
-                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
-                                {{ __('検索履歴') }}
+                        <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
+                            <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-8 w-8 sm:h-10 sm:w-10">
+                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
+                                {{ __('履歴') }}
                             </x-nav-link>
                         </div>
-                        <div class="flex flex-1 justify-center items-center whitespace-nowrap">
-                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="xl:h-20 xl:w-20 sm:h-20 sm:w-20 h-5 w-5">
-                            <x-nav-link class="text-2xl text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
-                                {{ __('アプリについて') }}
+                        <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap">
+                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-8 w-8 sm:h-10 sm:w-10">
+                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
+                                {{ __('サービス') }}
                             </x-nav-link>
                         </div>
                     </div>
