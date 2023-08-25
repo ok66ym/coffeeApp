@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             fontSize: {
                 '9xl': '9rem',
+                '1-5x': '1.5rem',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
