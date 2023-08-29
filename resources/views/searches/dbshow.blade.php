@@ -5,27 +5,12 @@
                 <div class="flex flex-col justify-center items-center border border-orange-900 relative rounded p-8 w-4/5 md:w-1/2 lg:w-2/3">
                     
                     <div class="absolute top-0 left-0 mt-2 ml-2">
-                        <!--<a href="/search/db/results" class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer no-underline">-->
-                        
-                        <!--    戻る-->
-                        <!--</a>-->
-                        <button onclick="goBack()" class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer">
+                        <button onclick="goBack()" class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer no-underline">
                             検索結果一覧に戻る
                         </button>
                     </div>
                     
                     <!--投稿情報-->
-                    <!--画像表示-->
-                    <!--@if($searchdb->image)-->
-                    <!--<div class='post_image'>-->
-                    <!--    <img src="{{ $searchdb->image }}" alt="画像が読み込めません。" class="w-80 h-80 object-cover"/>-->
-                    <!--</div>-->
-                    <!--@else-->
-                    <!--<div class="p-5 flex-grow flex justify-center items-center">-->
-                    <!--    <p>No Image</p>-->
-                    <!--</div>-->
-                    <!--@endif-->
-                    
                     <!-- コーヒー名、いいねボタン、いいねの数 -->
                     <div class="flex items-center space-x-4">
                         <h2 class="text-gray-700">
@@ -80,7 +65,7 @@
                     </h3>
                     @endif
                     
-                    <h3 class="coffeeposts_evaluation">
+                    <h3 class="searchdbposts_evaluation">
                         <span class="bg-orange-300 text-gray-700 px-1 rounded">苦味</span> {{ $searchdb->bitter}} &nbsp 
                         <span class="bg-orange-300 text-gray-700 px-1 rounded">酸味</span> {{ $searchdb->acidity }} &nbsp 
                         <span class="bg-orange-300 text-gray-700 px-1 rounded">コク</span> {{ $searchdb->rich }} &nbsp 

@@ -40,12 +40,12 @@
                         @if($like)
                             <!--いいね状態-->
                             <a href="{{ route('unlikeCoffeePost', $post) }}" class="btn btn-link btn-sm">
-                                <i class="fas fa-heart lg:fa-2x fa-1x text-danger" style="color: red;"></i>
+                                <i class="fas fa-heart fa-2x text-danger" style="color: red;"></i>
                             </a>
                         @else
                             <!--いいねしていない状態-->
                             <a href="{{ route('likeCoffeePost', $post) }}" class="btn btn-link btn-sm">
-                                <i class="far fa-heart lg:fa-2x fa-1x text-secondary" style="color: red;"></i>
+                                <i class="far fa-heart fa-2x text-secondary" style="color: red;"></i>
                             </a>
                         @endif
                         <!-- いいねの数 -->

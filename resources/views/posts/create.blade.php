@@ -72,7 +72,7 @@
                         <div class="flex items-center justify-center mt-8 mb-5">
                             <p class="lg:text-base text-sm mr-3 mb-6">苦味</p>
                             <div class="slider-container relative lg:w-96 w-60 lg:text-base text-sm">
-                                <input type="range" id="postbitter" min="1" max="5" step="0.5" name="post[bitter]" value="{{ old('post.bitter', session('post_values.bitter', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
+                                <input type="range" id="postbitter" min="1" max="5" step="0.5" name="post[bitter]" value="{{ old('post.bitter', session('post_values.bitter', 1)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-bitter"></span>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="flex items-center justify-center mt-7 mb-5">
                             <p class="lg:text-base text-sm mr-3 mb-6">酸味</p>
                             <div class="slider-container relative lg:w-96 w-60 lg:text-base text-sm">
-                                <input type="range" id="postacidity" min="1" max="5" step="0.5" name="post[acidity]" value="{{ old('post.acidity', session('post_values.acidity', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
+                                <input type="range" id="postacidity" min="1" max="5" step="0.5" name="post[acidity]" value="{{ old('post.acidity', session('post_values.acidity', 1)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-acidity"></span>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                         <div class="flex items-center justify-center mt-7 mb-5">
                             <p class="lg:text-base text-sm mr-3 mb-6">コク</p>
                             <div class="slider-container relative lg:w-96 w-60 lg:text-base text-sm">
-                                <input type="range" id="postrich" min="1" max="5" step="0.5" name="post[rich]" value="{{ old('post.rich', session('post_values.rich', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
+                                <input type="range" id="postrich" min="1" max="5" step="0.5" name="post[rich]" value="{{ old('post.rich', session('post_values.rich', 1)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-rich"></span>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="flex items-center justify-center mt-7 mb-5">
                             <p class="lg:text-base text-sm mr-3 mb-6">甘味</p>
                             <div class="slider-container relative lg:w-96 w-60 lg:text-base text-sm">
-                                <input type="range" id="postsweet" min="1" max="5" step="0.5" name="post[sweet]" value="{{ old('post.sweet', session('post_values.sweet', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
+                                <input type="range" id="postsweet" min="1" max="5" step="0.5" name="post[sweet]" value="{{ old('post.sweet', session('post_values.sweet', 1)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-sweet"></span>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                         <div class="flex items-center justify-center mt-7 mb-5">
                             <p class="lg:text-base text-sm mr-3 mb-6">香り</p>
                             <div class="slider-container relative lg:w-96 w-60 lg:text-base text-sm">
-                                <input type="range" id="postsmell" min="1" max="5" step="0.5" name="post[smell]" value="{{ old('post.smell', session('post_values.smell', 3)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
+                                <input type="range" id="postsmell" min="1" max="5" step="0.5" name="post[smell]" value="{{ old('post.smell', session('post_values.smell', 1)) }}" class="shadow-autofill focus:ring-2 focus:ring-orange-900 bg-orange-100 w-80 lg:h-2 h-1 rounded-full">
                                 <span class="slider-value absolute bottom-4 left-1/2" id="current-smell"></span>
                             </div>
                         </div> 
