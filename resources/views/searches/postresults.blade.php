@@ -1,77 +1,82 @@
     <x-app-layout>
         <div class="pt-20 pb-40">
 
-            <div class="flex flex-col justify-center items-center min-h-screen bg-orange-100 relative w-full">
+            <div class="ml-1 mr-1 flex flex-col justify-center items-center min-h-screen bg-orange-100 relative w-full">
                 <!--投稿結果を表示-->
-                <h1 class="flex justify-center mt-5 ml-5 border-b-4 border-orange-800 w-96 text-gray-700">
+                <h1 class="ml-1 mr-1 flex justify-center items-center mt-5 ml-5 border-b-4 border-orange-800 w-96 md:text-2xl text-lg text-gray-700">
                     検索結果一覧
                 </h1>
                 
                 <div class="coffeeposts_evaluation mt-5">
-                    <h3 class="text-gray-700 font-bold mb-3">あなたの検索内容</h3>
-                    <div class="flex items-center space-x-4">
-                        <span class="bg-orange-300 text-gray-700 px-1 rounded">苦味</span> {{ $postsearchInfo['bitter'] }}
-                        <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">酸味</span> {{ $postsearchInfo['acidity'] }}
-                        <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">コク</span> {{ $postsearchInfo['rich'] }} 
-                        <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">甘味</span> {{ $postsearchInfo['sweet'] }} 
-                        <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">香り</span> {{ $postsearchInfo['smell'] }}
+                    <h3 class="md:text-lg text-base text-gray-700 font-bold mb-3">あなたの検索内容</h3>
+                    <div class="flex items-center space-x-2">
+                        <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 rounded">苦味</p><span class="md:text-sm text-xs"> {{ $postsearchInfo['bitter'] }} </span>
+                        <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">酸味</p><span class="md:text-sm text-xs"> {{ $postsearchInfo['acidity'] }} </span>
+                        <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">コク</p><span class="md:text-sm text-xs"> {{ $postsearchInfo['rich'] }} </span>
+                        <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">甘味</p><span class="md:text-sm text-xs"> {{ $postsearchInfo['sweet'] }} </span>
+                        <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">香り</p><span class="md:text-sm text-xs"> {{ $postsearchInfo['smell'] }} </span>
                     </div>
                 </div>
                 
                 <!--説明文のポップアップ-->
                     <!-- ポップアップボタン -->
                     <div class="flex justify-center mt-3">
-                        <button id="show-popup" class="text-xs ml-8 px-4 py-2 bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold border border-orange-300 rounded cursor-pointer z-100">一致度について</button>
+                        <button id="show-popup" class="flex justify-center items-center md:text-base text-sm md:px-3 md:py-1 px-2 py-1 bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold border border-orange-300 rounded cursor-pointer z-100">一致度について</button>
                     </div>
                 
                     <!-- ポップアップの内容 -->
                     <div id="popup" class="fixed top-0 left-0 bg-black bg-opacity-50 hidden flex justify-center items-center mb-5 z-100 relative">
                         <div class="bg-yellow-100 border border-orange-900 p-8 rounded max-w-xl relative">
-                            <p>
+                            <p class="md:text-base text-sm">
                                 一致度は，<b class="text-orange-700">検索した数値の合計</b>と<b class="text-orange-700">検索結果の数値の合計</b>との比率を計算しています．<br>
                                 ※検索内容と一致していなくても一致度が高い場合があります．
+                                
                             </p>
                             <div class="flex justify-center items-center">
-                                <button id="close-popup" class="flex justify-center items-center p-4 border-0 focus:underline focus:text-white focus:text-black text-gray-700 rounded cursor-pointer ">×CLOSE</button>
+                                <button id="close-popup" class="md:text-sm text-xs flex justify-center items-center p-4 border-0 focus:underline focus:text-white focus:text-black text-gray-700 rounded cursor-pointer ">×CLOSE</button>
                             </div>
                         </div>
                     </div>
                 
-                <div class="font-bold text-base mt-5 mb-10 w-2/3">
+                <div class="font-bold text-base mt-5 mb-10 flex flex-col justify-center items-center md:w-10/12">
                     @if($postsearches->isEmpty())
                         <div class="flex justify-center items-center h-full mt-10">
-                            <p class="text-gray-700 text-center">
+                            <p class="md:text-xl text-sm text-gray-700 text-center">
                                 コーヒーが見つかりませんでした...
                             </p>
                         </div>
                     @else
-                        <div class='border-orange-300 flex flex-col justify-center items-center'>
+                        <div class='border-orange-300 flex flex-col justify-center items-center md:w-10/12'>
                             @foreach ($postsearches as $postsearch)
-                                <div class="border-t border-b border-orange-300 py-3 flex justify-between items-center w-2/3">
-                                    <div>
+                                <div class="border-t border-b border-orange-300 py-3 flex justify-center items-center md:w-10/12">
+                                    <div class="flex-1">
                                         <!-- コーヒー名を表示 -->
                                         <div class='post_name'>
                                             <h2 class='flex justify-beween items-center'>
-                                                <a class="text-base p-50 text-gray-700 font-bold hover:text-orange-700 rounded transition duration-300 no-underline mr-3" href="{{ route('searches.postshow', $postsearch->id) }}" >{{ $postsearch->name }}</a>
+                                                <a class="md:text-xl text-sm p-50 text-gray-700 font-bold hover:text-orange-700 rounded transition duration-300 no-underline break-words w-full" href="{{ route('searches.postshow', $postsearch->id) }}" >{{ $postsearch->name }}</a>
                                             </h2>
                                         </div>
                                         
                                         <div class="flex items-center space-x-0.5">
-                                            <p class="text-sm p-50 text-gray-700">
+                                            <p class="md:text-sm text-xs p-50 text-gray-700">
                                                 一致度
                                             </p>
-                                            <p class="text-sm p-50 text-gray-700 ml-1">
-                                                <p class="text-sm p-50 text-gray-700"><span class="text-base text-red-500 rounded"> {{ number_format($postsearch->rating, 1) }} </span> / 5.0</p>
+                                            <p class="p-50 text-gray-700 ml-1">
+                                                <p class="md:text-sm text-xs p-50 text-gray-700"><span class="md:text-base text-sm text-red-500 rounded"> {{ number_format($postsearch->rating, 1) }} </span> / 5.0</p>
                                             </p>
                                         </div>
                                             
+                                        <!--上が終われば，詳細画面のデザイン→検索履歴のデザイン→再検索結果一覧→再検索詳細画面-->
                                         <!-- 苦味、酸味、コク、甘味、香りの表示部分 -->
-                                        <div class="flex items-center space-x-4 mt-2 text-sm">
-                                            <span class="bg-orange-300 text-gray-700 px-1 rounded">苦味</span> {{ $postsearch->bitter }}
-                                            <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">酸味</span> {{ $postsearch->acidity }}
-                                            <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">コク</span> {{ $postsearch->rich }}
-                                            <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">甘味</span> {{ $postsearch->sweet }}
-                                            <span class="bg-orange-300 text-gray-700 px-1 mr-2 rounded">香り</span> {{ $postsearch->smell }}
+                                        <div class="coffeeposts_evaluation mt-5">
+                                            <!--<h3 class="md:text-lg text-base text-gray-700 font-bold mb-3">あなたの検索内容</h3>-->
+                                            <div class="flex justify-start items-center space-x-2">
+                                                <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 rounded">苦味</p><span class="md:text-sm text-xs"> {{ $postsearch->bitter }} </span>
+                                                <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">酸味</p><span class="md:text-sm text-xs"> {{ $postsearch->acidity }} </span>
+                                                <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">コク</p><span class="md:text-sm text-xs"> {{ $postsearch->rich }} </span>
+                                                <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">甘味</p><span class="md:text-sm text-xs"> {{ $postsearch->sweet }} </span>
+                                                <p class="md:text-base text-sm bg-orange-300 text-gray-700 px-1 mr-2 rounded">香り</p><span class="md:text-sm text-xs"> {{ $postsearch->smell }} </span>
+                                            </div>
                                         </div>
                                     </div>
                             
@@ -102,7 +107,7 @@
                 </div>
                 
                 <div class="flex justify-center items-center mt-5">
-                    <a href='/search/posts' class="text-1xl bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-1 px-4 border border-orange-300 rounded cursor-pointer no-underline">
+                    <a href='/search/posts' class="md:text-base text-sm flex justify-center items-center bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold md:px-4 md:py-2 px-2 py-1 border border-orange-300 rounded cursor-pointer no-underline">
                         検索に戻る
                     </a>
                 </div>
