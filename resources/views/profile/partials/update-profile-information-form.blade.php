@@ -30,7 +30,7 @@
             </div>
     
             <div>
-                <x-input-label for="email" :value="__('メールアドレス(ID)')" />
+                <x-input-label for="email" :value="__('メールアドレス(ID)  ○○@○○という形式で設定してください')" />
                 <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
                 <x-input-error class="mt-2" :messages="$errors->get('email')" />
     
