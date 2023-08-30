@@ -18,14 +18,6 @@ use App\Http\Controllers\InstructController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 //Breezeのダッシュボード
 Route::get('/dashboard', function () {
     return view('dashboard');
