@@ -11,7 +11,7 @@
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('メールアドレス(ログインID)')" />
+            <x-input-label for="email" :value="__('メールアドレス(ログインID)  ○○@○○という形式で設定してください')" />
             <x-text-input id="myinfo" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
