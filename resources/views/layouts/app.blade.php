@@ -30,15 +30,16 @@
             <div class="bg-yellow-700 fixed top-0 inset-x-0 z-50 shadow-lg">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                      <!-- Placeholder for spacing -->
-                    <div class="flex items-center">
-                    </div>
+                    <!--<div class="flex items-center">-->
+                    <!--</div>-->
                     
                     <!-- Logo -->
-                    <!--<div class="flex-shrink-0">-->
-                    <!--    <a href="{{ route('index') }}">-->
-                    <!--        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
-                    <!--    </a>-->
-                    <!--</div>-->
+                    <div class="flex-shrink-0 flex justify-center items-center">
+                        <a href="{{ route('index') }}" class="text-gray-900 font-bold lg:text-4xl text-xl no-underline">
+                            CoffSpot
+                            <!--<x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
+                        </a>
+                    </div>
                     
                     <!-- Settings Dropdown -->
                     <div class="flex items-center">
@@ -85,38 +86,82 @@
                 <div class="bg-yellow-700 fixed bottom-0 inset-x-0 z-10">
             <!-- Navigation Links - for larger screens -->
                     <!-- Navigation Links - for larger screens -->
-                    <div class="flex justify-center py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <!--<div class="flex justify-center py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">-->
                         <!-- Using flex-1 to divide the space equally and justify-center and items-center to center the content. -->
+                    <!--    <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">-->
+                    <!--        <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="h-8 w-8 sm:h-10 sm:w-10">-->
+                    <!--        <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('index')" :active="request()->routeIs('index')">-->
+                    <!--            {{ __('ホーム') }}-->
+                    <!--        </x-nav-link>-->
+                    <!--    </div>-->
+                    <!--    <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">-->
+                    <!--        <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="h-8 w-8 sm:h-10 sm:w-10">-->
+                    <!--        <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('create')" :active="request()->routeIs('create')">-->
+                    <!--            {{ __('投稿') }}-->
+                    <!--        </x-nav-link>-->
+                    <!--    </div>-->
+                    <!--    <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">-->
+                    <!--        <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="h-8 w-8 sm:h-10 sm:w-10">-->
+                    <!--        <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searches.index')" :active="request()->routeIs('searches.index')">-->
+                    <!--            {{ __('探す') }}-->
+                    <!--        </x-nav-link>-->
+                    <!--    </div>-->
+                    <!--    <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">-->
+                    <!--        <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-8 w-8 sm:h-10 sm:w-10">-->
+                    <!--        <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">-->
+                    <!--            {{ __('履歴') }}-->
+                    <!--        </x-nav-link>-->
+                    <!--    </div>-->
+                    <!--    <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap">-->
+                    <!--        <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-8 w-8 sm:h-10 sm:w-10">-->
+                    <!--        <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">-->
+                    <!--            {{ __('サービス') }}-->
+                    <!--        </x-nav-link>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    
+                    <div class="flex justify-center py-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                        <!-- Home link with icon -->
                         <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="h-8 w-8 sm:h-10 sm:w-10">
-                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('index')" :active="request()->routeIs('index')">
-                                {{ __('ホーム') }}
+                            <x-nav-link class="flex flex-col lg:flex-row items-center text-white font-bold no-underline hover:underline sm:text-base text-xs" :href="route('index')" :active="request()->routeIs('index')">
+                                <img src="{{ asset('img/home_logo.png') }}" alt="ホーム" class="h-8 w-8 sm:h-10 sm:w-10">
+                                <span class="ml-2 mt-2 sm:text-base text-xs">{{ __('ホーム') }}</span>
                             </x-nav-link>
                         </div>
+                        
+                        <!-- Post link with icon -->
                         <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="h-8 w-8 sm:h-10 sm:w-10">
-                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('create')" :active="request()->routeIs('create')">
-                                {{ __('投稿') }}
+                            <x-nav-link class="flex flex-col lg:flex-row items-center text-white font-bold no-underline hover:underline sm:text-base text-xs" :href="route('create')" :active="request()->routeIs('create')">
+                                <img src="{{ asset('img/post_logo.png') }}" alt="投稿" class="h-8 w-8 sm:h-10 sm:w-10">
+                                <span class="ml-2 mt-2 sm:text-base text-xs">{{ __('投稿') }}</span>
                             </x-nav-link>
                         </div>
+                        
+                        <!-- Search link with icon -->
                         <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="h-8 w-8 sm:h-10 sm:w-10">
-                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searches.index')" :active="request()->routeIs('searches.index')">
-                                {{ __('探す') }}
+                            <x-nav-link class="flex flex-col lg:flex-row items-center text-white font-bold no-underline hover:underline sm:text-base text-xs" :href="route('searches.index')" :active="request()->routeIs('searches.index')">
+                                <img src="{{ asset('img/coffee_logo.png') }}" alt="検索" class="h-8 w-8 sm:h-10 sm:w-10">
+                                <span class="ml-2 mt-2 sm:text-base text-xs">{{ __('探す') }}</span>
                             </x-nav-link>
                         </div>
+                        
+                        <!-- Search History link with icon -->
                         <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap xl:border-r xl:border-white">
-                            <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-8 w-8 sm:h-10 sm:w-10">
-                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
-                                {{ __('履歴') }}
+                            <x-nav-link class="flex flex-col lg:flex-row items-center text-white font-bold no-underline hover:underline sm:text-base text-xs" :href="route('searchestores.index')" :active="request()->routeIs('searchestores.index')">
+                                <img src="{{ asset('img/search_logo.png') }}" alt="検索履歴" class="h-8 w-8 sm:h-10 sm:w-10">
+                                <span class="ml-2 mt-2 sm:text-base text-xs">{{ __('履歴') }}</span>
                             </x-nav-link>
                         </div>
+                        
+                        <!-- About App link with icon -->
                         <div class="flex-1 flex flex-col lg:flex-row justify-center items-center xl:whitespace-nowrap">
-                            <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-8 w-8 sm:h-10 sm:w-10">
-                            <x-nav-link class="sm:text-base text-xs text-white font-bold no-underline" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
-                                {{ __('サービス') }}
+                            <x-nav-link class="flex flex-col lg:flex-row items-center text-white font-bold no-underline hover:underline sm:text-base text-xs" :href="route('about.instruction')" :active="request()->routeIs('about.instruction')">
+                                <img src="{{ asset('img/hint_logo.png') }}" alt="アプリについて" class="h-8 w-8 sm:h-10 sm:w-10">
+                                <span class="ml-2 mt-2 sm:text-base text-xs">{{ __('サービス') }}</span>
                             </x-nav-link>
                         </div>
+                    
                     </div>
                 </div>
         </div>
