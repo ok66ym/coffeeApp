@@ -68,7 +68,30 @@ class CoffeePostController extends Controller
     
     //投稿編集実行
     public function update(CoffeePostRequest $request, CoffeePost $post) {
+        // $input_post = $request['post'];
+        // $post->fill($input_post)->save();
+        
+        // return redirect('/posts/' . $post->id);
         $input_post = $request['post'];
+        
+        // 画像がアップロードされた場合
+        if ($request->file('image')) {
+            // Cloudinaryに新しい画像をアップロード
+            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $input_post['image'] = $image_url;
+    
+            // 既存の画像をCloudinaryから削除
+            if($post->image) {
+                Cloudinary::destroy(str_replace(config('cloudinary.secure_base_url'), "", $post->image));
+            }
+        } 
+        // 画像がアップロードされず、既存の画像が削除された場合
+        else if ($post->image && !$request->has('image')) {
+            // 既存の画像をCloudinaryから削除
+            Cloudinary::destroy(str_replace(config('cloudinary.secure_base_url'), "", $post->image));
+            $input_post['image'] = null; // 画像のURLをnullに設定
+        }
+        
         $post->fill($input_post)->save();
         
         return redirect('/posts/' . $post->id);
