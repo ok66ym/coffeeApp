@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     
-                        <form action='/posts/{{ $post->id }}' method="POST">
+                        <form action='/posts/{{ $post->id }}' method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             
