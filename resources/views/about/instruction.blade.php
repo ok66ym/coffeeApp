@@ -26,6 +26,8 @@
             </div>
             <div class="text-orange-900 text-center w-2/3 mb-10">
                     <p class="md:text-base text-xs text-center font-semibold">当サービスは非公式であり，<b>当サービスに関するお問い合わせを関連サイトにすることはおやめください．</b></p>
+                    <p class="md:text-base text-xs text-center font-semibold">画面の操作ができない場合は，JavaScriptが有効になっているか確認してください．</p>
+                    <p class="md:text-base text-xs text-center font-semibold">予告なく当サービスは閉鎖する可能性があります．</p>
             </div>
 
             <div class="md:text-2xl text-xl text-orange-900 font-bold mb-5 underline">
