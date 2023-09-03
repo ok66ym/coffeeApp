@@ -187,7 +187,8 @@ return [
         'post.shop_name' => '販売店',
         'post.shop_url' => '上記URL',
         'post.explanation' => 'コーヒーについての説明',
-        'current_password' => '現在のパスワード'
+        'current_password' => '現在のパスワード',
+        'post.image' => '画像'
     ],
 
 ];
