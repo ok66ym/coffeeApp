@@ -145,17 +145,25 @@
                                 @else
                                     <button id="remove-image" type="button" class="text-black hover:underline hidden lg:text-sm text-xs">写真を削除</button>
                                 @endif
+                                
+                                <!--Javascriptを無効にしている場合の画像サイズによるエラー処理-->
+                                <p class="image_error" style="color:red">{{ $errors->first('image') }}</p>
+                                
+                                <!--画像アップロード時に，1.5MB以上の場合はエラーメッセージを表示．-->
+                                <p id="image-size-error" class="text-red-500 font-bold lg:text-sm text-xs" style="display: none;">画像サイズは1.5MBまで</p>
                             </div>
-                            <div id="image-preview" class="lg:w-64 lg:h-64 w-40 h-40 border border-orange-900 relative mb-4">
+                            <div id="image-preview" class="flex justify-center items-center lg:w-64 lg:h-64 w-40 h-40 border border-orange-900 relative mb-4">
                                 @if($post->image) <!-- 既存の画像が存在する場合、画像を表示 -->
                                     <img src="{{ asset($post->image) }}" alt="Uploaded Image" class="w-full h-full object-cover">
+                                @else
+                                    <div class="text-red-500 font-bold lg:text-sm text-xs lg;pl-3 lg;pr-3 pl-1 pr-1">画像サイズは1.5MBまで</div>
                                 @endif
                             </div>
                         </div>
                             
                         <div class="flex justify-end">
                             <!--投稿ボタンの実装-->
-                            <input class="lg:text-base text-sm bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-2 px-4 border border-orange-300 rounded cursor-pointer" type="submit" value="保存"/>
+                            <input id="save-button" class="lg:text-base text-sm bg-orange-300 text-gray-800 hover:text-black hover:bg-orange-400 focus:border-orange-400 font-bold py-2 px-4 border border-orange-300 rounded cursor-pointer" type="submit" value="保存"/>
                         </div>
                     </div>
                 </div>
@@ -231,12 +239,32 @@
                     previewContainer.innerHTML = ''; // Clear the preview area
                     removeImageButton.classList.add('hidden'); // 有効な画像がない場合、ボタンを非表示
                 }
+                
+                //画像アップロード時に，1.5MB以上の場合はエラーメッセージが表示される．
+                const fileSize = e.target.files[0]?.size; // ファイルサイズを取得 (単位: バイト)
+                const maxSize = 1.5 * 1024 * 1024; // 1.5MB
+                const errorElement = document.getElementById('image-size-error');
+                const saveButton = document.getElementById('save-button'); // 保存ボタンを取得
+                
+                if (fileSize && fileSize > maxSize) {
+                    errorElement.style.display = 'block'; // エラーメッセージを表示
+                    saveButton.disabled = true; // 保存ボタンを無効化
+                } else {
+                    errorElement.style.display = 'none'; // エラーメッセージを非表示
+                    saveButton.disabled = false; // 保存ボタンを有効化
+                }
             });
             
             // プレビューした画像を削除する動作
             document.getElementById('remove-image').addEventListener('click', function() {
-                document.getElementById('image-upload').value = ''; // Reset file input
-                document.getElementById('image-preview').innerHTML = ''; // Clear the preview area
+                document.getElementById('image-upload').value = ''; //添付したファイルをリセット
+                const previewContainer = document.getElementById('image-preview');
+                const errorElement = document.getElementById('image-size-error');
+                const saveButton = document.getElementById('save-button'); // 保存ボタンを取得
+                
+                previewContainer.innerHTML = '<div class="text-red-500 font-bold lg:text-sm text-xs pl-3 pr-3">画像サイズは1.5MBまで</div>'; // メッセージを再表示
+                errorElement.style.display = 'none'; // エラーメッセージを非表示
+                saveButton.disabled = false; // 保存ボタンを有効化
                 this.classList.add('hidden'); // ボタンを非表示
             });
             

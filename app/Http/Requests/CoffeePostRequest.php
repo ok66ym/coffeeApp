@@ -36,6 +36,15 @@ class CoffeePostRequest extends FormRequest
             'post.smell' => 'required|numeric|max:5|min:0',
             'post.roasted' => 'nullable',
             'post.explanation' => 'required|string',
+            'post.image' => 'nullable|image|max:1500', // 1.5MBの制限を追加
+        ];
+    }
+    
+    //画像のサイズが1.5MB以上の場合でのエラーメッセージの表示
+    public function messages()
+    {
+        return [
+            'image.max' => '1.5MB以下の画像をアップロードしてください。',
         ];
     }
 }

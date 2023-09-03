@@ -36,6 +36,11 @@ class CoffeePostController extends Controller
     // 投稿保存
     public function store(CoffeePostRequest $request, CoffeePost $post) {
         
+        //JavaScript無効時．画像が1.5MB以上の場合の処理
+        if ($request->file('image') && $request->file('image')->getSize() > 1.5 * 1024 * 1024) {
+            return redirect()->back()->withErrors(['image' => '画像サイズは1.5MBまで']);
+        }
+        
         //投稿機能
         $input = $request['post'];                              //['post']：ビューファイル上でのpost[bitter]などのリクエストパラメータを取得する．
         $input += ['user_id' => $request->user()->id];          //投稿に紐付いたuser_idを取得し，変数inputに入れる．
@@ -68,10 +73,12 @@ class CoffeePostController extends Controller
     
     //投稿編集実行
     public function update(CoffeePostRequest $request, CoffeePost $post) {
-        // $input_post = $request['post'];
-        // $post->fill($input_post)->save();
         
-        // return redirect('/posts/' . $post->id);
+        //JavaScript無効時．画像が1.5MB以上の場合の処理
+        if ($request->file('image') && $request->file('image')->getSize() > 1.5 * 1024 * 1024) {
+            return redirect()->back()->withErrors(['image' => '画像サイズは1.5MBまで']);
+        }
+        
         $input_post = $request['post'];
         
         // 画像がアップロードされた場合
