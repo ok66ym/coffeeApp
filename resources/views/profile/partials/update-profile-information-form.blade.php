@@ -1,12 +1,13 @@
 <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900">
-                {{ __('アカウント情報') }}
+                {{ __('アカウント情報') }}<br>
+                {{ __("ゲストユーザーでログインしている場合はアカウント情報を更新できません．") }}
+            </p>
             </h2>
     
             <p class="mt-1 text-sm text-gray-600">
                 {{ __("アカウント情報を更新できます．") }}
-            </p>
         </header>
     
         <form id="send-verification" method="post" action="{{ route('verification.send') }}">
