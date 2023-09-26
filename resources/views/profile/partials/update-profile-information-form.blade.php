@@ -19,20 +19,33 @@
     
             <div>
                 <x-input-label for="name" :value="__('ユーザー名')" />
-                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            
+                @if($user->email === 'guest@guest.com')
+                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required readonly />
+                @else
+                    <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                @endif
                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
             </div>
             
             <div>
                 <x-input-label for="myinfo" :value="__('自己紹介')" />
-                <x-text-input id="myinfo" name="myinfo" type="text" class="mt-1 block w-full" :value="old('myinfo', $user->myinfo)" required autofocus autocomplete="myinfo" />
+            
+                @if($user->email === 'guest@guest.com')
+                    <x-text-input id="myinfo" name="myinfo" type="text" class="mt-1 block w-full" :value="old('myinfo', $user->myinfo)" required readonly />
+                @else
+                    <x-text-input id="myinfo" name="myinfo" type="text" class="mt-1 block w-full" :value="old('myinfo', $user->myinfo)" required autofocus autocomplete="myinfo" />
+                @endif
                 <x-input-error class="mt-2" :messages="$errors->get('myinfo')" />
             </div>
     
             <div>
                 <x-input-label for="email" :value="__('メールアドレス(ID)  ○○@○○という形式で設定してください')" />
-                <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-                <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                @if($user->email === 'guest@guest.com')
+                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required readonly />
+                @else
+                    <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+                @endif
     
                 @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                     <div>
