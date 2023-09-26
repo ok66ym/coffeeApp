@@ -45,6 +45,7 @@
                         
             <x-primary-button class="ml-3">
                 {{ __('ログイン') }}
+                
             </x-primary-button>
             <!--@if (Route::has('password.request'))-->
             <!--    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">-->
@@ -52,5 +53,15 @@
             <!--    </a>-->
             <!--@endif-->
         </div>
+        
     </form>
+    <!-- ゲストログインボタン -->
+    <div class="flex items-center justify-end mt-4">
+        <form method="POST" action="{{ route('guest_login') }}" class="ml-3">
+            @csrf
+            <x-primary-button type="submit">
+                {{ __('ゲストログイン') }}
+            </x-primary-button>
+        </form>
+    </div>
 </x-guest-layout>

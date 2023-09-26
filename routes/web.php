@@ -7,6 +7,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SearchStoreController;
 use App\Http\Controllers\InstructController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,5 +86,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// グストログインユーザー機能
+Route::post('/guestLogin', [LoginController::class, 'guestLogin'])->name('guest_login');
 
 require __DIR__.'/auth.php';
