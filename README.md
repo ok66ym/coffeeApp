@@ -1,2 +1,2 @@
 <h3>アプリケーション名</h3>
-<p>CoffSpot</p>
+<h4>CoffSpot</h4>
