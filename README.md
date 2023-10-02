@@ -35,7 +35,8 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 ![search](https://github.com/ok66ym/coffeeApp/assets/134782129/e565841a-d48b-417d-8669-25546886b451)
 
 **ユーザーの検索履歴から直接コーヒーを再検索：**  
-ユーザーの検索履歴を保存し，ワンクリックで再検索できます．
+ユーザーの検索履歴を保存し，ワンクリックで再検索できます．  
+![searchHistory](https://github.com/ok66ym/coffeeApp/assets/134782129/3639d304-6602-42bf-b21c-16ce1e645605)
 
 ## 実装機能
 ### 機能一覧
