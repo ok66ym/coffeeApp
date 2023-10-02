@@ -72,7 +72,7 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 表を作成
 
 ## ER図
-
+<img width="715" alt="ER" src="https://github.com/ok66ym/coffeeApp/assets/134782129/bad5badf-50d0-4234-8101-bdfe3855b88d">
 
 ## 工夫した点
 
