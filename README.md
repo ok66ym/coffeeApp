@@ -1,5 +1,5 @@
 # CoffSpot / コーヒー検索サービス
-![アプリケーション_画面](https://github.com/ok66ym/coffeeApp/assets/134782129/e4d7a1c7-5f06-412a-a1d4-b5845b3dc69a)
+![アプリケーション_画面](https://github.com/ok66ym/coffeeApp/assets/134782129/48cd6209-f864-4327-a145-47813a129a83)
 
 ## サービス概要
 CoffSpotは，「好みのコーヒーに手軽に出会える場を提供したい」という想いから作成した，コーヒー検索サービスです．  
