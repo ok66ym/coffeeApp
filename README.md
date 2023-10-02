@@ -31,13 +31,13 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 
 ![post](https://github.com/ok66ym/coffeeApp/assets/134782129/24d818df-34f8-49af-934e-55300a67bc86)
 
-
+<br>
 **あらかじめ登録されたコーヒー情報とユーザーが投稿したコーヒー情報を検索：**    
 苦味・酸味・コク・甘味・香りの5項目の数値をスライダーを動かして，好みに合わせて設定するだけでコーヒーを検索できます．  
 
 ![search](https://github.com/ok66ym/coffeeApp/assets/134782129/7f24f630-18fe-4077-95d4-7a548be7a513)
 
-
+<br>
 **ユーザーの検索履歴から直接コーヒーを再検索：**    
 ユーザーの検索履歴を保存し，ワンクリックで再検索できます．  
 
