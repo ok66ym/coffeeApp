@@ -28,7 +28,7 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 ## メイン機能の使い方
 **ユーザーが出会ったコーヒーの情報を投稿：**  
 スライダーを動かして，出会ったコーヒーの苦味・酸味・コク・甘味・香りを評価できます．
-![coffeePost](https://github.com/ok66ym/coffeeApp/assets/134782129/2855ff01-37b8-4fdc-ba9a-1b08585145ff)
+![post](https://github.com/ok66ym/coffeeApp/assets/134782129/10e926b4-cfca-4af1-a735-73955e5db351)
 
 **あらかじめ登録されたコーヒー情報とユーザーが投稿したコーヒー情報を検索：**  
 苦味・酸味・コク・甘味・香りの5項目の数値をスライダーを動かして，好みに合わせて設定するだけでコーヒーを検索できます．
