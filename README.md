@@ -59,7 +59,7 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 - Laravel 9.52.10
 
 ### 環境
-- AWS(EC2+Cloud9+S3)
+- AWS(EC2+Cloud9)
 - MySQL(MariaDB)
 - Composer 2.5.8
 - Git 2.40.1 / GitHub
@@ -72,7 +72,6 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 表を作成
 
 ## ER図
-<img width="715" alt="ER" src="https://github.com/ok66ym/coffeeApp/assets/134782129/926f0791-eb45-4045-bcbe-152131d4c1c3">
 
 
 ## 工夫した点
