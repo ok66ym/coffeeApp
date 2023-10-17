@@ -97,3 +97,4 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 ## 今後実装予定の機能
 - 非同期通信でのお気に入り機能
 - Google Map API
+- 検索アルゴリズムの修正
