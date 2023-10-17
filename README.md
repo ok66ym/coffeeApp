@@ -93,7 +93,7 @@ https://coffee-search-app-7a8565b25739.herokuapp.com/login
 - ユーザーが設定した値から，好みのコーヒーを検索できるアルゴリズムの実装．
 - UI/UXの調整(レスポンシブ設定・Tailwind CSS)．
 
-## 今後実装予定の機能
+## 今後の課題
 - 非同期通信でのお気に入り機能
 - Google Map API
 - 検索アルゴリズムの修正
