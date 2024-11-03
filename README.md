@@ -11,6 +11,7 @@ https://qiita.com/okymbio/items/e9ce4a097deff4884695
 
 ### URL
 https://coffee-search-app-7a8565b25739.herokuapp.com/login  
+(現在非公開)
 レスポンシブ対応のため，PCでもスマートフォンでも利用可能です．
 
 ### テストアカウント
